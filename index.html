@@ -980,7 +980,120 @@
       </button>
     </div>
 
-<!-- ========================================================= SECURE PASSWORD RECOVERY FORM ========================================================= --> <div class="auth-form" id="forgot-form"> <div class="auth-msg" id="forgot-msg"></div> <!-- STEP 1 --> <div id="recovery-step-1"> <div class="form-group"> <label>Account Recovery</label> <input id="f-identity" type="text" placeholder="Enter registered Email or Phone" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" onkeydown="if(event.key==='Enter') sendRecoveryOTP()" /> </div> <div style="display:flex;gap:10px;margin-top:20px;"> <button class="btn" style="flex:1;background:#222;color:#fff;border:1px solid #333;justify-content:center;clip-path:none;border-radius:2px;" onclick="hideForgotPasswordForm()" > Back </button> <button class="btn btn-blue" style="flex:1;justify-content:center;clip-path:none;border-radius:2px;" onclick="sendRecoveryOTP()" > Send OTP </button> </div> </div> <!-- STEP 2 --> <div id="recovery-step-2" style="display:none;"> <div class="form-group"> <label>Enter OTP</label> <input id="f-otp" type="text" placeholder="Enter OTP code" autocomplete="off" onkeydown="if(event.key==='Enter') verifyRecoveryOTP()" /> </div> <div class="form-group"> <label>New Password</label> <input id="f-new-password" type="password" placeholder="Enter new password" autocomplete="new-password" /> </div> <div class="form-group"> <label>Confirm Password</label> <input id="f-confirm-password" type="password" placeholder="Confirm new password" autocomplete="new-password" onkeydown="if(event.key==='Enter') verifyRecoveryOTP()" /> </div> <div style="display:flex;gap:10px;margin-top:20px;"> <button class="btn" style="flex:1;background:#222;color:#fff;border:1px solid #333;justify-content:center;clip-path:none;border-radius:2px;" onclick="backToRecoveryStep1()" > Back </button> <button class="btn btn-blue" style="flex:1;justify-content:center;clip-path:none;border-radius:2px;" onclick="verifyRecoveryOTP()" > Reset Password </button> </div> </div> </div>
+<!-- =========================================================
+   SECURE PASSWORD RECOVERY FORM
+========================================================= -->
+
+<div class="auth-form" id="forgot-form">
+
+  <div class="auth-msg" id="forgot-msg"></div>
+
+  <!-- STEP 1 -->
+  <div id="recovery-step-1">
+
+    <div class="form-group">
+      <label>Account Recovery</label>
+
+      <input
+        id="f-identity"
+        type="text"
+        placeholder="Enter registered Email or Phone"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+      />
+
+    </div>
+
+    <div style="display:flex;gap:10px;margin-top:20px;">
+
+      <button
+        type="button"
+        class="btn"
+        style="flex:1;background:#222;color:#fff;border:1px solid #333;justify-content:center;clip-path:none;border-radius:2px;"
+        onclick="hideForgotPasswordForm()"
+      >
+        Back
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-blue"
+        style="flex:1;justify-content:center;clip-path:none;border-radius:2px;"
+        onclick="sendRecoveryOTP()"
+      >
+        Send OTP
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="recovery-step-2" style="display:none;">
+
+    <div class="form-group">
+      <label>Enter OTP</label>
+
+      <input
+        id="f-otp"
+        type="text"
+        placeholder="Enter OTP code"
+        autocomplete="off"
+      />
+
+    </div>
+
+    <div class="form-group">
+      <label>New Password</label>
+
+      <input
+        id="f-new-password"
+        type="password"
+        placeholder="Enter new password"
+        autocomplete="new-password"
+      />
+
+    </div>
+
+    <div class="form-group">
+      <label>Confirm Password</label>
+
+      <input
+        id="f-confirm-password"
+        type="password"
+        placeholder="Confirm new password"
+        autocomplete="new-password"
+      />
+
+    </div>
+
+    <div style="display:flex;gap:10px;margin-top:20px;">
+
+      <button
+        type="button"
+        class="btn"
+        style="flex:1;background:#222;color:#fff;border:1px solid #333;justify-content:center;clip-path:none;border-radius:2px;"
+        onclick="backToRecoveryStep1()"
+      >
+        Back
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-blue"
+        style="flex:1;justify-content:center;clip-path:none;border-radius:2px;"
+        onclick="verifyRecoveryOTP()"
+      >
+        Reset Password
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
     <div class="auth-form" id="register-form">
       <div class="auth-msg" id="reg-msg"></div>
 
@@ -1060,8 +1173,7 @@
 ========================================================= */
 
 /* OPEN RECOVERY FORM */
-function showForgotPasswordForm() {
-
+window.showForgotPasswordForm = function() {
   document.getElementById('login-form').classList.remove('active');
   document.getElementById('register-form').classList.remove('active');
 
@@ -1075,8 +1187,7 @@ function showForgotPasswordForm() {
 }
 
 /* CLOSE RECOVERY FORM */
-function hideForgotPasswordForm() {
-
+window.hideForgotPasswordForm = function() {
   document.getElementById('forgot-form').classList.remove('active');
 
   document.getElementById('auth-tabs-container').style.display = 'flex';
@@ -1090,8 +1201,7 @@ function hideForgotPasswordForm() {
 }
 
 /* RESET UI */
-function resetRecoveryUI() {
-
+window.resetRecoveryUI = function() {
   document.getElementById('recovery-step-1').style.display = 'block';
   document.getElementById('recovery-step-2').style.display = 'none';
 
@@ -1103,16 +1213,14 @@ function resetRecoveryUI() {
 }
 
 /* BACK BUTTON */
-function backToRecoveryStep1() {
+window.backToRecoveryStep1 = function() {
 
   document.getElementById('recovery-step-1').style.display = 'block';
   document.getElementById('recovery-step-2').style.display = 'none';
 
 }
-
 /* SHOW MESSAGE */
-function recoveryMessage(type, text) {
-
+window.recoveryMessage = function(type, text) {
   const box = document.getElementById('forgot-msg');
 
   box.style.display = 'block';
@@ -1141,8 +1249,7 @@ function recoveryMessage(type, text) {
    SEND OTP
 ========================================================= */
 
-async function sendRecoveryOTP() {
-
+window.sendRecoveryOTP = async function() {
   const identity = document.getElementById('f-identity').value.trim();
 
   if (!identity) {
@@ -1190,8 +1297,7 @@ async function sendRecoveryOTP() {
    VERIFY OTP + RESET PASSWORD
 ========================================================= */
 
-async function verifyRecoveryOTP() {
-
+window.verifyRecoveryOTP = async function() {
   const identity = document.getElementById('f-identity').value.trim();
 
   const otp = document.getElementById('f-otp').value.trim();
@@ -1241,30 +1347,33 @@ async function verifyRecoveryOTP() {
   );
 
   try {
+const result = await api('verifyRecoveryOTP', {
 
-    const result = await api('verifyRecoveryOTP', {
+  identity,
+  otp,
+  newPassword
 
-      identity,
-      otp,
-      newPassword
+});
 
-    });
+console.log('VERIFY OTP RESPONSE:', result);
 
-    if (!result.success) {
+if (!result || !result.success) {
 
-      recoveryMessage(
-        'error',
-        result.message || 'Invalid OTP.'
-      );
+  recoveryMessage(
+    'error',
+    (result && result.message)
+      ? result.message
+      : 'Server returned invalid response.'
+  );
 
-      return;
+  return;
 
-    }
+}
 
-    recoveryMessage(
-      'success',
-      'Password reset successful. You can now login.'
-    );
+recoveryMessage(
+  'success',
+  'Password reset successful. You can now login.'
+);
 
     setTimeout(() => {
 
@@ -1282,6 +1391,7 @@ async function verifyRecoveryOTP() {
   }
 
 }
+
 </script>
   // <!-- EDIT MEMBER MODAL -->
   <div id="edit-modal">

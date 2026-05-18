@@ -7291,32 +7291,8 @@ const APP_URL = "https://script.google.com/macros/s/AKfycbxzKC-smOFubiTeJSt7_Sjl
       };
     }
   })();
-  console.log('✅ Sansiro v8.0 — Team Sheet Hub · Dual-Club Execs · Officials Inbox loaded.');
-  document.addEventListener("contextmenu", function(e) {
-    e.preventDefault();
-  });
-  document.addEventListener("keydown", function(e) {
-    if (
-      e.key === "F12" ||
-      (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key)) ||
-      (e.ctrlKey && e.key === "U")
-    ) {
-      e.preventDefault();
-    }
-  });
-  setInterval(function () {
-    const threshold = 160;
-    if (
-      window.outerWidth - window.innerWidth > threshold ||
-      window.outerHeight - window.innerHeight > threshold
-    ) {
-      document.body.innerHTML = "<h1 style='color:red;text-align:center;margin-top:20%'>Access Denied</h1>";
-    }
-  }, 1000);
-  document.addEventListener("selectstart", function(e) {
-    e.preventDefault();
-  });
-
+ 
+ 
 
   
   /* ═══════════════════════════════════════════════════════════════════

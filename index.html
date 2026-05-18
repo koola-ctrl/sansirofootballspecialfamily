@@ -2170,7 +2170,7 @@ async function verifyRecoveryOTP() {
   </footer>
   <script>
   'use strict';
-const APP_URL = "https://script.google.com/macros/s/AKfycbz64Wg6uPLH8NlLJQpo6pjp579J6QmFDI7bUO8raVVPHGhNKpXu-h7-NIbgSOd00_AT/exec";
+const APP_URL = "https://script.google.com/macros/s/AKfycbxzKC-smOFubiTeJSt7_SjlaILAF1XoWjM1OTNXWiiBcI3FQJDOd3emlhjNmqo5jkcK/exec";
   window.APP_URL = APP_URL; 
   
   // 🔄 Automatically generate dues months from August 2025 up to the current date
@@ -7918,16 +7918,32 @@ const APP_URL = "https://script.google.com/macros/s/AKfycbz64Wg6uPLH8NlLJQpo6pjp
       const r=await _api('adminImpersonate',{adminID:_id(),adminName:_name(),targetID:id});
       if(r&&r.success&&r.user){
         sessionStorage.setItem('v82_admin_origin', JSON.stringify(window.currentUser));
-        window.currentUser = r.user;
-        _toast('Now viewing as '+(r.user.Name||r.user.Role),'success');
+window.currentUser = r.user;
+
+localStorage.setItem(
+  'sansiro_user',
+  JSON.stringify(r.user)
+);
+localStorage.setItem(
+  'currentUser',
+  JSON.stringify(r.user)
+);        _toast('Now viewing as '+(r.user.Name||r.user.Role),'success');
         setTimeout(()=>location.reload(),700);
       } else _toast((r&&r.message)||'Failed','error');
     };
     window.SansiroV82.endImpersonate = function(){
       const orig=sessionStorage.getItem('v82_admin_origin');
       if(!orig){ _toast('Not impersonating','warn'); return; }
-      window.currentUser = JSON.parse(orig);
-      sessionStorage.removeItem('v82_admin_origin');
+window.currentUser = JSON.parse(orig);
+
+localStorage.setItem(
+  'sansiro_user',
+  JSON.stringify(window.currentUser)
+);
+localStorage.setItem(
+  'currentUser',
+  JSON.stringify(window.currentUser)
+);      sessionStorage.removeItem('v82_admin_origin');
       _toast('Restored admin','success'); setTimeout(()=>location.reload(),500);
     };
 // /* ============================================================

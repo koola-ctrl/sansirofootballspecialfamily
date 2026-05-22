@@ -1,628 +1,516 @@
 <html lang="en">
-      <head>
-      <meta charset="UTF-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <title>SANSIRO SPECIAL — AC Milan vs Inter Milan</title>
-      <link rel="preconnect" href="https://fonts.googleapis.com"/>
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-      <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-      <style>
-      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-      :root{
-        --red:#e8192c;--red-light:#ff4d5e;--red-dark:#a00015;
-        --blue:#0066cc;--blue-light:#4d9fff;--blue-dark:#003d7a;
-        --gold:#d4a843;--gold-light:#f0c96a;--gold-dark:#8a6820;
-        --dark:#080a0e;--dark-2:#0d1117;--dark-3:#141921;
-        --glass:rgba(255,255,255,0.06);--glass-strong:rgba(255,255,255,0.09);
-        --border:rgba(255,255,255,0.13);--border-bright:rgba(255,255,255,0.22);
-        --text:#f0f0f0;--muted:rgba(255,255,255,0.5);--muted-dark:rgba(255,255,255,0.3);
-        --green:#00d46a;--orange:#ff8c00;
-      }
-      html{scroll-behavior:smooth}
-      body{background:var(--dark);color:var(--text);font-family:'Rajdhani',sans-serif;min-height:100vh;overflow-x:hidden;padding-bottom:32px;transition:background .3s}
-      ::-webkit-scrollbar{width:4px}
-      ::-webkit-scrollbar-track{background:#0a0a0a}
-      ::-webkit-scrollbar-thumb{background:var(--gold)}
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SANSIRO SPECIAL — AC Milan vs Inter Milan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#e8192c;--red-light:#ff4d5e;--red-dark:#a00015;
+  --blue:#0066cc;--blue-light:#4d9fff;--blue-dark:#003d7a;
+  --gold:#d4a843;--gold-light:#f0c96a;--gold-dark:#8a6820;
+  --dark:#080a0e;--dark-2:#0d1117;--dark-3:#141921;
+  --glass:rgba(255,255,255,0.06);--glass-strong:rgba(255,255,255,0.09);
+  --border:rgba(255,255,255,0.13);--border-bright:rgba(255,255,255,0.22);
+  --text:#f0f0f0;--muted:rgba(255,255,255,0.5);--muted-dark:rgba(255,255,255,0.3);
+  --green:#00d46a;--orange:#ff8c00;
+}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--text);font-family:'Rajdhani',sans-serif;min-height:100vh;overflow-x:hidden;padding-bottom:32px;transition:background .3s}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#0a0a0a}
+::-webkit-scrollbar-thumb{background:var(--gold)}
 
-      body::before{display:none}
-      body::after{display:none}
-      #dashboard-page.active::before{display:none}
+body::before,body::after{display:none}
+#dashboard-page.active::before{display:none}
 
-      .page{display:none;min-height:100vh;position:relative;z-index:1}
-      .page.active{display:block}
+.page{display:none;min-height:100vh;position:relative;z-index:1;padding-top:12px}
+.page.active{display:block}
 
-     #navbar{
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
-      z-index:5000;
-      height:64px;
-      padding:0 1rem;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      backdrop-filter:blur(24px);
-      -webkit-backdrop-filter:blur(24px);
-      background:rgba(8,10,14,0.96);
-      border-bottom:1px solid rgba(212,168,67,0.18);
-      box-shadow:0 4px 24px rgba(0,0,0,0.45);
-      overflow:visible;
-    }
-      .nav-brand{font-family:'Bebas Neue';font-size:1.15rem;letter-spacing:2px;background:linear-gradient(135deg,var(--red),var(--gold),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer;white-space:nowrap;flex-shrink:0;max-width:60vw;overflow:hidden;text-overflow:ellipsis}
-      .nav-links{display:flex;gap:1.5rem;list-style:none}
-      .nav-links a{font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.82);cursor:pointer;transition:color .2s,border-color .2s;font-weight:600;text-decoration:none;padding-bottom:2px;border-bottom:2px solid transparent}
-      .nav-links a:hover{color:#fff;border-bottom-color:rgba(212,168,67,0.5)}
-      .nav-links a.active{color:#fff;border-bottom:2px solid var(--gold);padding-bottom:2px}
-    .nav-right{
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-      gap:.9rem;
-      flex-shrink:0;
-      position:relative;
-      z-index:6000;
-    }
-      .nav-enter{background:linear-gradient(135deg,var(--red),var(--blue));border:none;color:#fff;padding:.45rem 1.1rem;font-family:'Rajdhani';font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:opacity .2s,transform .2s;white-space:nowrap}
-      .nav-enter:hover{opacity:.88;transform:translateY(-1px)}
-      #nav-user-info{font-size:.72rem;color:var(--gold);letter-spacing:1px;display:none;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* ── NAVBAR ── */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:5000;height:68px;padding:0 .7rem 0 1rem;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);background:linear-gradient(180deg,rgba(8,10,14,0.88) 0%,rgba(5,7,12,0.96) 100%);border-bottom:1px solid rgba(212,168,67,0.18);box-shadow:0 10px 40px rgba(0,0,0,0.7),inset 0 1px 0 rgba(255,255,255,0.05),inset 0 -1px 0 rgba(212,168,67,0.08);overflow:visible;perspective:1800px;transform-style:preserve-3d}
+#navbar::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent)}
+#navbar::after{content:'';position:absolute;top:0;left:-130%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(212,168,67,0.12),transparent);transform:skewX(-25deg);animation:navbarShine 8s linear infinite}
+@keyframes navbarShine{100%{left:140%}}
+
+/* ── LOGO ── */
+.nav-logo-container{display:flex !important;align-items:center;gap:14px;height:100%;min-width:0}
+.nav-crest-gold-ring{position:relative;width:64px !important;height:64px !important;min-width:64px;min-height:64px;border-radius:50%;padding:3px;cursor:zoom-in;background:conic-gradient(from 135deg,#8a6d29,#d4a843,#f4d27d,#ffffff,#f4d27d,#d4a843,#8a6d29);box-shadow:0 4px 15px rgba(0,0,0,0.8),inset 0 0 5px rgba(0,0,0,0.3),0 0 10px rgba(212,168,67,0.4);display:flex;align-items:center;justify-content:center;transition:transform .4s cubic-bezier(.175,.885,.32,1.275),box-shadow .4s ease;z-index:10}
+.crest-glow-overlay{position:absolute;inset:-10px;border-radius:50%;background:linear-gradient(90deg,rgba(232,25,44,0.5) 0%,transparent 50%,rgba(0,102,204,0.5) 100%);filter:blur(12px);z-index:-1;pointer-events:none}
+.nav-logo-link{width:100%;height:100%;border-radius:50%;object-fit:cover;background:#000;display:block;border:1px solid rgba(0,0,0,0.2)}
+.logo-divider{width:2px;height:42px;background:linear-gradient(to bottom,transparent,#d4a843,transparent);opacity:.8}
+.nav-brand{display:flex;flex-direction:column;cursor:pointer;line-height:1;min-width:0}
+.brand-top{font-family:'Bebas Neue',sans-serif;font-size:1.45rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;background:linear-gradient(to bottom,#ffffff 10%,#f4d27d 40%,#d4a843 70%,#8a6d29 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.9));white-space:nowrap}
+.brand-bottom{font-size:.6rem;letter-spacing:3px;color:#d4a843;font-weight:700;margin-top:2px;text-transform:uppercase;text-shadow:1px 1px 2px rgba(0,0,0,0.8);white-space:nowrap}
+.gold-text{background:linear-gradient(to bottom,#ffe8a3,#d4a843);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-logo-container:hover .nav-crest-gold-ring{transform:scale(1.08) translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,0.9),0 0 22px rgba(212,168,67,0.65)}
+
+/* ── NAV LINKS CONTAINER ── */
+.nav-links-container{display:flex;align-items:center;padding:0 6px;height:42px;border-radius:14px;border:1px solid rgba(212,168,67,0.45);background:linear-gradient(135deg,rgba(212,168,67,0.06),rgba(212,168,67,0.02));box-shadow:0 0 18px rgba(212,168,67,0.12),inset 0 1px 0 rgba(212,168,67,0.1),inset 0 -1px 0 rgba(212,168,67,0.06)}
+
+/* ── NAV LINKS ── */       
+.nav-links{display:flex;gap:1.3rem;list-style:none;align-items:center;perspective:1200px;margin:0;padding:0}
+.nav-links a{position:relative;display:flex;align-items:center;justify-content:center;font-size:.77rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.82);cursor:pointer;text-decoration:none;font-weight:700;padding:.78rem .9rem;border-radius:14px;overflow:hidden;transform-style:preserve-3d;transition:transform .4s cubic-bezier(.2,.8,.2,1),color .35s ease,box-shadow .4s ease,background .35s ease}
+.nav-links a::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);opacity:0;transform:scale(.9);transition:opacity .35s ease,transform .35s ease}
+.nav-links a::after{content:'';position:absolute;left:50%;bottom:7px;width:0%;height:3px;border-radius:20px;transform:translateX(-50%);background:linear-gradient(90deg,var(--red),var(--gold),var(--blue));box-shadow:0 0 12px rgba(212,168,67,0.8),0 0 22px rgba(0,194,255,0.4);transition:width .4s cubic-bezier(.2,.8,.2,1)}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,0.03);transform:translateY(-3px) scale(1.04);box-shadow:0 12px 30px rgba(0,0,0,0.45),0 0 20px rgba(212,168,67,0.18);text-shadow:0 0 12px rgba(212,168,67,0.35)}
+.nav-links a:hover::before{opacity:1;transform:scale(1)}
+.nav-links a:hover::after,.nav-links a.active::after{width:82%}
+.nav-links a.active{color:#fff;background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));border:1px solid rgba(212,168,67,0.22);box-shadow:0 10px 25px rgba(0,0,0,0.35),0 0 15px rgba(212,168,67,0.12)}
+.nav-links a.active::before{opacity:1;transform:scale(1)}
+
+/* ── NAV RIGHT ── */
+.nav-right{display:flex;align-items:center;justify-content:flex-end;gap:.55rem;flex-shrink:0;position:relative;z-index:6000}
+.nav-right>*{flex-shrink:0}
+.nav-enter{background:linear-gradient(135deg,var(--red),var(--blue));border:none;color:#fff;padding:.5rem 1rem;font-family:'Rajdhani';font-size:.73rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:opacity .3s,transform .3s,box-shadow .3s;white-space:nowrap;box-shadow:0 8px 18px rgba(0,0,0,0.35),0 0 12px rgba(0,102,204,0.25)}
+.nav-enter:hover{opacity:.95;transform:translateY(-2px) scale(1.03);box-shadow:0 12px 24px rgba(0,0,0,0.45),0 0 18px rgba(212,168,67,0.35)}
+#nav-user-info{font-size:.72rem;color:var(--gold);letter-spacing:1px;display:none;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
 /* ── HAMBURGER ── */
-    .hamburger {
-      display: none;
-      width: 30px;
-      height: 20px;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      z-index: 7001;
-      background: none;
-      border: none;
-      padding: 0;
-    }
+.hamburger{display:none;width:28px;height:19px;flex-direction:column;justify-content:space-between;cursor:pointer;z-index:7001;background:none;border:none;padding:0;margin-left:2px}
+.hamburger span{width:100%;height:3px;background:linear-gradient(90deg,var(--gold),#fff);border-radius:2px;transition:all .35s ease;box-shadow:0 0 10px rgba(212,168,67,0.4)}
+.hamburger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 
-    .hamburger span {
-      width: 100%;
-      height: 3px;
-      background: var(--gold);
-      transition: all 0.3s ease;
-      border-radius: 2px;
-    }
+/* ── MOBILE NAV ── */
+.mobile-nav{position:fixed;top:68px;left:0;width:100%;height:calc(100vh - 68px);background:linear-gradient(180deg,rgba(5,7,12,0.97),rgba(8,10,14,0.985));backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);z-index:7000;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-12px);transition:opacity .25s ease,transform .25s ease,visibility .25s ease;overflow-y:auto;padding:1rem 0 3rem}
+.mobile-nav.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.mobile-nav ul{list-style:none;padding:0 1.5rem;margin:0;display:flex;flex-direction:column}
+.mobile-nav ul li{width:100%}
+.mobile-nav ul li a{display:block;width:100%;padding:1.15rem 0;border-bottom:1px solid rgba(212,168,67,0.12);color:var(--gold);text-decoration:none;font-size:1rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;transition:all .25s ease}
+.mobile-nav ul li:last-child a{border-bottom:none}
+.mobile-nav ul li a:hover,.mobile-nav ul li a.active{color:#f4d27d;padding-left:.8rem;text-shadow:0 0 12px rgba(212,168,67,.35),0 0 20px rgba(212,168,67,.15)}
 
-    /* OPEN STATE */
-    .hamburger.open span:nth-child(1){transform:translateY(10px) rotate(45deg);}
-    .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
-    .hamburger.open span:nth-child(3){transform:translateY(-10px) rotate(-45deg);}
+.glass{background:var(--glass);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--border);border-radius:2px;transition:border-color .2s}
+.glass:hover{border-color:var(--border-bright)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.8rem;font-family:'Rajdhani';font-size:.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:all .25s}
+.btn-red{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;box-shadow:0 4px 15px rgba(232,25,44,0.3)}
+.btn-blue{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;box-shadow:0 4px 15px rgba(0,102,204,0.3)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#000;box-shadow:0 4px 15px rgba(212,168,67,0.25)}
+.btn-outline{background:transparent;border:1px solid var(--border-bright);color:var(--text);clip-path:none;border-radius:2px}
+.btn-sm{padding:.4rem 1rem;font-size:.75rem}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.18);box-shadow:0 6px 20px rgba(0,0,0,0.4)}
+.btn:active{transform:translateY(0)}
 
-      /* MOBILE MENU */
-      .mobile-nav{
-        position:fixed;
-        top:64px;
-        left:0;
-        width:100%;
-        height:calc(100vh - 64px);
-        background:rgba(5,7,12,0.985);
-        backdrop-filter:blur(24px);
-        -webkit-backdrop-filter:blur(24px);
-        z-index:7000;
-        opacity:0;
-        visibility:hidden;
-        pointer-events:none;
-        transform:translateY(-12px);
-        transition:opacity .25s ease,transform .25s ease,visibility .25s ease;
-        overflow-y:auto;
-        padding:1rem 0 3rem;
-      }
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:.4rem;opacity:.85}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,0.07);border:1px solid var(--border);color:#fff;padding:.7rem 1rem;font-family:'Rajdhani';font-size:.95rem;border-radius:2px;outline:none;transition:border-color .2s,background .2s}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--gold);background:rgba(255,255,255,0.09)}
+.form-group select{cursor:pointer;appearance:none}
+.form-group select option{background:#111;color:#fff}
+.form-group textarea{min-height:100px;resize:vertical}
 
-      .mobile-nav.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);}
+#auth-modal{position:fixed;inset:0;z-index:9998;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(0,0,0,.85);backdrop-filter:blur(8px)}
+#auth-modal.open{display:flex}
+.auth-box{width:100%;max-width:480px;padding:2.5rem;position:relative;animation:fadeUp .3s ease}
+.auth-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;transition:color .2s}
+.auth-close:hover{color:#fff}
+.auth-logo{font-family:'Bebas Neue';font-size:2rem;letter-spacing:4px;text-align:center;margin-bottom:.3rem;background:linear-gradient(135deg,var(--red),var(--gold),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.auth-sub{text-align:center;font-size:.7rem;letter-spacing:3px;color:var(--muted);margin-bottom:1.5rem}
+.auth-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:1.5rem}
+.auth-tab{flex:1;padding:.7rem;text-align:center;cursor:pointer;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);transition:all .2s;border-bottom:2px solid transparent}
+.auth-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.auth-form{display:none}.auth-form.active{display:block}
+.auth-msg{padding:.6rem 1rem;border-radius:2px;font-size:.85rem;margin-bottom:.8rem;display:none}
+.auth-msg.error{background:rgba(255,30,30,0.1);border:1px solid var(--red);color:var(--red)}
+.auth-msg.success{background:rgba(0,200,100,0.1);border:1px solid #00c864;color:#00c864}
 
-      .mobile-nav ul{list-style:none;padding:0 1.5rem;margin:0;display:flex;flex-direction:column;}
-      .mobile-nav ul li{width:100%;}
-      .mobile-nav ul li a{
-        display:block;width:100%;padding:1.15rem 0;
-        border-bottom:1px solid rgba(212,168,67,0.12);
-        color:var(--gold);text-decoration:none;
-        font-size:1rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;
-        transition:all .22s ease;
-      }
-      .mobile-nav ul li:last-child a{border-bottom:none;}
-      .mobile-nav ul li a:hover,.mobile-nav ul li a.active{color:#f4d27d;padding-left:.8rem;text-shadow:0 0 12px rgba(212,168,67,.35);}
+#home-page{position:relative;overflow:hidden}
+.hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding-top:64px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 25% 50%,rgba(232,25,44,0.18) 0%,transparent 60%),radial-gradient(ellipse at 75% 50%,rgba(0,102,204,0.18) 0%,transparent 60%),radial-gradient(ellipse at 50% 100%,rgba(212,168,67,0.08) 0%,transparent 50%)}
+.hero-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:60px 60px}
+.hero-content{position:relative;text-align:center;z-index:2;animation:fadeUp .8s ease both}
+.hero-eyebrow{font-size:.7rem;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.hero-title{font-family:'Bebas Neue';font-size:clamp(5rem,14vw,12rem);line-height:.9;letter-spacing:4px;margin-bottom:.5rem}
+.hero-title .line1{display:block;color:#fff}
+.hero-title .line2{display:block;background:linear-gradient(135deg,var(--red),var(--gold),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:clamp(1rem,3vw,1.8rem);font-weight:300;color:var(--muted);letter-spacing:4px;text-transform:uppercase;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.match-vs{padding:5rem 2rem;text-align:center;position:relative}
+.match-vs::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
+.match-teams{display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
+.team-side{display:flex;flex-direction:column;align-items:center;gap:1rem}
+.team-crest{width:100px;height:100px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:2.5rem;border:2px solid}
+.team-crest.red{border-color:var(--red);background:radial-gradient(circle,rgba(255,30,30,0.15),transparent);color:var(--red)}
+.team-crest.blue{border-color:var(--blue);background:radial-gradient(circle,rgba(0,83,160,0.15),transparent);color:var(--blue)}
+.team-name{font-family:'Bebas Neue';font-size:1.8rem;letter-spacing:4px}
+.vs-badge{font-family:'Bebas Neue';font-size:3rem;color:var(--gold)}
+.scroll-hint{text-align:center;padding:2rem;font-size:.75rem;letter-spacing:4px;color:var(--muted);text-transform:uppercase;animation:pulse 2s infinite}
 
-  /* ── LOGO SYSTEM ── */
-  .nav-logo-container {
-    display: flex !important;
-    align-items: center;
-    gap: 15px;
-    height: 100%;
-  }
+.inner-page{padding:100px 2rem 4rem;max-width:1200px;margin:0 auto}
+.page-header{margin-bottom:3rem}
+.page-header h1{font-family:'Bebas Neue';font-size:clamp(3rem,8vw,6rem);letter-spacing:3px;line-height:.9;margin-bottom:1rem}
+.page-header h1 .line1{display:block;color:#ffffff}
+.page-header h1 .line2{display:block;background:linear-gradient(135deg,var(--red),var(--gold),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.page-header p{color:var(--muted);max-width:600px;line-height:1.7;margin-top:.8rem}
 
-  .nav-crest-gold-ring {
-    position: relative;
-    width: 70px !important;
-    height: 70px !important;
-    min-width: 70px;
-    min-height: 70px;
-    border-radius: 50%;
-    padding: 3px; 
-    cursor: zoom-in;
-    background: conic-gradient(from 135deg,#8a6d29,#d4a843,#f4d27d,#ffffff,#f4d27d,#d4a843,#8a6d29);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.8),inset 0 0 5px rgba(0,0,0,0.3),0 0 10px rgba(212,168,67,0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
-    z-index: 10;
-  }
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-card{padding:2rem;background:rgba(255,255,255,0.03);backdrop-filter:blur(12px);border-left:2px solid var(--gold);border-radius:4px}
+.about-card h3{font-family:'Bebas Neue';font-size:1.8rem;letter-spacing:2px;margin-bottom:1rem;color:#ffffff}
+.about-card p{color:var(--muted);line-height:1.8;font-size:0.9rem}
+.about-card p strong{color:var(--gold);font-weight:600}
 
-  .crest-glow-overlay {
-    position: absolute;
-    inset: -10px;
-    border-radius: 50%;
-    background: linear-gradient(90deg,rgba(232,25,44,0.5) 0%,transparent 50%,rgba(0,102,204,0.5) 100%);
-    filter: blur(12px);
-    z-index: -1;
-    pointer-events: none;
-  }
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem}
+@media(max-width:600px){.stats-row{grid-template-columns:repeat(2,1fr)}}
+.stat-box{padding:1.5rem;text-align:center;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:4px}
+.stat-num{font-family:'Bebas Neue';font-size:3rem;background:linear-gradient(135deg,var(--gold),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:.7rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase}
 
-  .nav-logo-link {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    background: #000;
-    display: block;
-    border: 1px solid rgba(0,0,0,0.2);
-  }
+.team-header-container{max-width:1100px;margin:0 auto 2rem;padding:2rem 2.5rem;background:rgba(255,255,255,0.04);backdrop-filter:blur(12px);border:1px solid rgba(255,215,0,0.15);border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.4);position:relative;z-index:10}
+.team-header-row{display:flex;justify-content:space-between;align-items:center;gap:2rem}
+.team-header-row .page-header{max-width:65%}
+.it-card{width:280px;padding:2.5rem 2rem;border:2px solid var(--gold);border-radius:16px;text-align:center;background:rgba(212,168,67,0.08);box-shadow:0 0 40px rgba(212,168,67,0.3);transform:translateY(-10px)}
+.it-card .member-avatar{width:120px;height:120px;font-size:2.8rem;border-width:3px;border-color:var(--gold)}
+.compact-header h1{font-size:2.2rem}
+.team-section-title{font-family:'Bebas Neue';font-size:2rem;letter-spacing:4px;margin:2.5rem 0 1.5rem;text-transform:uppercase;color:var(--gold);text-align:center}
+.vertical-block{text-align:center;margin-bottom:3rem}
+.member-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin-bottom:1.5rem}
+.member-card{width:200px;padding:1.8rem 1.2rem;text-align:center;transition:transform .2s,border-color .2s;position:relative}
+.member-card:hover{transform:translateY(-5px);border-color:var(--gold)}
+.member-avatar{width:100px;height:100px;border-radius:50%;margin:0 auto .8rem;object-fit:cover;border:2px solid var(--border);background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:2.2rem;color:var(--gold);overflow:hidden}
+.member-avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.member-name{font-family:'Bebas Neue';font-size:1.1rem;letter-spacing:2px;line-height:1.2}
+.member-role{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:.3rem}
+.member-team{font-size:.7rem;color:var(--muted);margin-top:.2rem}
+.edit-member-btn{position:absolute;top:.5rem;right:.5rem;background:none;border:1px solid var(--border);color:var(--muted);font-size:.6rem;padding:.2rem .5rem;cursor:pointer;border-radius:2px;display:none;font-family:'Rajdhani';letter-spacing:1px;text-transform:uppercase;transition:all .2s}
+.edit-member-btn:hover{border-color:var(--gold);color:var(--gold)}
+.member-card:hover .edit-member-btn{display:block}
+.captain-badge{display:inline-block;background:rgba(201,168,76,0.15);border:1px solid var(--gold);color:var(--gold);font-size:.55rem;letter-spacing:2px;padding:.15rem .4rem;border-radius:2px;text-transform:uppercase;margin-top:.3rem}
+.status-badge{display:inline-block;font-size:.58rem;letter-spacing:1px;padding:.15rem .4rem;border-radius:2px;margin-top:.2rem;text-transform:uppercase}
+.status-injured{background:rgba(255,30,30,0.15);border:1px solid var(--red);color:var(--red)}
+.status-suspended{background:rgba(255,165,0,0.15);border:1px solid orange;color:orange}
 
-  .logo-divider {
-    width: 2px;
-    height: 45px;
-    background: linear-gradient(to bottom,transparent,#d4a843,transparent);
-    opacity: 0.8;
-  }
+.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+@media(max-width:700px){.news-grid{grid-template-columns:1fr}}
+.news-card{padding:1.5rem;cursor:pointer;transition:border-color .2s}
+.news-card:hover{border-color:var(--gold)}
+.news-date{font-size:.7rem;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:.5rem}
+.news-card h3{font-family:'Bebas Neue';font-size:1.6rem;letter-spacing:2px;margin-bottom:.5rem}
+.news-card p{color:var(--muted);font-size:.9rem;line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.news-author{font-size:.75rem;color:var(--muted);margin-top:.8rem}
 
-  /* FIX 1: .nav-brand was defined twice — kept the logo-system (stacked) version only */
-  .nav-brand {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    line-height: 1;
-  }
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+.media-item{border-radius:2px;overflow:hidden;position:relative;aspect-ratio:16/9;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center}
+.media-item img{width:100%;height:100%;object-fit:cover}
+.media-item video{width:100%;height:100%;object-fit:cover}
+.media-item-label{position:absolute;bottom:0;left:0;right:0;padding:.5rem 1rem;background:linear-gradient(transparent,rgba(0,0,0,.85));font-size:.75rem;color:var(--muted)}
 
-  .brand-top {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: linear-gradient(to bottom,#ffffff 10%,#f4d27d 40%,#d4a843 70%,#8a6d29 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.9));
-  }
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+@media(max-width:700px){.contact-grid{grid-template-columns:1fr}}
+.contact-detail{display:flex;align-items:flex-start;gap:1rem;margin-top:1.2rem;padding:1rem;border-left:2px solid var(--gold)}
+.contact-detail-label{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+.contact-detail-val{font-size:.95rem;color:var(--text)}
 
-  .brand-bottom {
-    font-size: 0.65rem;
-    letter-spacing: 4px;
-    color: #d4a843;
-    font-weight: 700;
-    margin-top: 2px;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-  }
+.achievements-split{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+@media(max-width:768px){.achievements-split{grid-template-columns:1fr}}
+.team-achievements{padding:2rem;border-top:2px solid var(--border)}
+.team-achievements.red-theme{border-top-color:var(--red)}
+.team-achievements.blue-theme{border-top-color:var(--blue)}
+.ach-header{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.ach-crest-sm{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:var(--glass);border:1px solid var(--border)}
+.ach-club-name{font-family:'Bebas Neue';font-size:1.8rem;letter-spacing:2px}
+.ach-list{display:flex;flex-direction:column;gap:1rem}
+.ach-item{display:flex;align-items:center;gap:1.2rem;padding:1rem;background:rgba(255,255,255,0.02);border-radius:2px}
+.ach-icon{font-size:1.5rem;opacity:0.8}
+.ach-count{font-family:'Bebas Neue';font-size:1.8rem;color:var(--gold);line-height:1}
+.ach-name{font-size:0.75rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.section-line{height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin-top:0.5rem;width:100px}
 
-  .gold-text {
-    background: linear-gradient(to bottom,#ffe8a3,#d4a843);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+/* ── PAYMENT STATUS ── */
+.dash-qual-display{width:100%;display:flex;justify-content:flex-end;align-items:flex-start;position:relative;z-index:5;margin-top:1.2rem;margin-bottom:1rem;animation:fadeSlideIn .7s ease}
+.qual-badge{position:relative;overflow:hidden;width:320px;max-width:100%;display:flex;flex-direction:column;gap:.85rem;padding:1rem;border-radius:20px;border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.03));box-shadow:0 10px 30px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08);transform:perspective(1000px) rotateX(2deg);transition:transform .45s ease,box-shadow .45s ease,border-color .45s ease;animation:floatCard 4s ease-in-out infinite}
+.qual-badge:hover{transform:perspective(1000px) rotateX(0deg) translateY(-2px) scale(1.01)}
+.qual-badge::before{content:'';position:absolute;top:-150%;left:-60%;width:80%;height:320%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);transform:rotate(25deg);animation:shineSweep 5s linear infinite}
+.qual-top{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.qual-label{font-family:'Rajdhani',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:.4s ease}
+.qual-percent{font-family:'Rajdhani',sans-serif;font-size:1.3rem;font-weight:800;transition:.4s ease}
+.qual-progress-wrap{width:100%;height:14px;overflow:hidden;border-radius:999px;background:rgba(255,255,255,.06);box-shadow:inset 0 2px 8px rgba(0,0,0,.45)}
+.qual-progress{position:relative;height:100%;border-radius:999px;transition:width 1s cubic-bezier(.4,2,.3,1);animation:progressPulse 2.5s ease-in-out infinite}
+.qual-progress::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.08),rgba(255,255,255,.35),rgba(255,255,255,.08));animation:glowSweep 2s linear infinite}
+.qual-badge.qualified{border-color:rgba(0,255,128,.4);box-shadow:0 0 20px rgba(0,255,128,.15),0 12px 35px rgba(0,0,0,.5)}
+.qual-badge.qualified .qual-label,.qual-badge.qualified .qual-percent{color:#00ff99;text-shadow:0 0 10px rgba(0,255,153,.4)}
+.qual-badge.qualified .qual-progress{background:linear-gradient(90deg,#00b85c,#00ff99)}
+.qual-badge.partial{border-color:rgba(255,190,0,.4);box-shadow:0 0 20px rgba(255,190,0,.15),0 12px 35px rgba(0,0,0,.5)}
+.qual-badge.partial .qual-label,.qual-badge.partial .qual-percent{color:#ffd54f;text-shadow:0 0 10px rgba(255,213,79,.4)}
+.qual-badge.partial .qual-progress{background:linear-gradient(90deg,#ff9800,#ffd54f)}
+.qual-badge.not-qualified{border-color:rgba(255,70,70,.4);box-shadow:0 0 20px rgba(255,70,70,.18),0 12px 35px rgba(0,0,0,.5)}
+.qual-badge.not-qualified .qual-label,.qual-badge.not-qualified .qual-percent{color:#ff6666;text-shadow:0 0 10px rgba(255,102,102,.4)}
+.qual-badge.not-qualified .qual-progress{background:linear-gradient(90deg,#ff2e2e,#ff6666)}
+@keyframes shineSweep{0%{left:-80%}100%{left:160%}}
+@keyframes glowSweep{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@keyframes progressPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.15)}}
+@keyframes floatCard{0%,100%{transform:perspective(1000px) rotateX(2deg) translateY(0px)}50%{transform:perspective(1000px) rotateX(2deg) translateY(-2px)}}
+@keyframes fadeSlideIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
 
-  .nav-logo-container:hover .nav-crest-gold-ring {
-    transform: scale(1.1) translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.9),0 0 20px rgba(212,168,67,0.6);
-  }
+/* ── DASHBOARD HEADER ── */
+.dash-header{width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-top:2rem;margin-bottom:2rem}
+.dash-user-area{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.dash-avatar-wrap{width:90px;height:90px;border-radius:50%;overflow:hidden;flex-shrink:0;border:3px solid var(--gold);background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(212,168,67,0.3)}
+.dash-avatar-wrap img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.dash-user-info{display:flex;flex-direction:column;gap:.25rem}
+.dash-team-tag{font-size:.75rem;color:var(--muted)}
+.dash-right-panel{display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;gap:.8rem;min-width:340px;position:relative;z-index:20}
+.nav-right{margin-left:0 !important;margin-right:-125px !important}
 
-      .glass{background:var(--glass);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--border);border-radius:2px;transition:border-color .2s}
-      .glass:hover{border-color:var(--border-bright)}
-      .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.8rem;font-family:'Rajdhani';font-size:.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:all .25s}
-      .btn-red{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;box-shadow:0 4px 15px rgba(232,25,44,0.3)}
-      .btn-blue{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;box-shadow:0 4px 15px rgba(0,102,204,0.3)}
-      .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#000;box-shadow:0 4px 15px rgba(212,168,67,0.25)}
-      .btn-outline{background:transparent;border:1px solid var(--border-bright);color:var(--text);clip-path:none;border-radius:2px}
-      .btn-sm{padding:.4rem 1rem;font-size:.75rem}
-      .btn:hover{transform:translateY(-2px);filter:brightness(1.18);box-shadow:0 6px 20px rgba(0,0,0,0.4)}
-      .btn:active{transform:translateY(0)}
+/* ── LOGOUT BUTTON ── */
+.dash-logout-btn{position:relative;display:flex;align-items:center;justify-content:center;gap:.32rem;width:auto;min-width:95px;max-width:110px;height:32px;padding:0 .55rem;border:none;border-radius:10px !important;overflow:hidden;cursor:pointer;isolation:isolate;clip-path:none !important;font-family:'Rajdhani',sans-serif;font-size:.34rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#000;background:linear-gradient(135deg,rgba(255,40,40,.95),rgba(160,0,0,.95));backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.08);box-shadow:0 6px 16px rgba(255,0,0,.18),inset 0 1px 0 rgba(255,255,255,.14);transform:perspective(1000px) rotateX(2deg);transition:transform .3s ease,box-shadow .3s ease,filter .3s ease}
+.dash-logout-btn::after{content:'';position:absolute;inset:-20%;background:radial-gradient(circle,rgba(255,80,80,.25),transparent 70%);z-index:-2;animation:logoutGlow 3s ease-in-out infinite}
+.dash-logout-btn::before{content:'';position:absolute;top:-120%;left:-60%;width:70%;height:320%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:rotate(25deg);animation:logoutShine 4s linear infinite}
+.logout-icon{position:relative;z-index:2;font-size:.75rem;filter:drop-shadow(0 0 8px rgba(255,255,255,.3));animation:powerPulse 2s ease infinite}
+.logout-text{position:relative;z-index:2}
+.dash-logout-btn:hover{transform:perspective(1000px) translateY(-2px) scale(1.01);filter:brightness(1.06);box-shadow:0 12px 28px rgba(255,0,0,.28),0 0 18px rgba(255,80,80,.18)}
+.dash-logout-btn:active{transform:scale(.98)}
+@keyframes logoutShine{0%{left:-80%}100%{left:150%}}
+@keyframes logoutGlow{0%,100%{opacity:.5;transform:scale(.96)}50%{opacity:1;transform:scale(1.03)}}
+@keyframes powerPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@media(max-width:768px){.dash-header{flex-direction:column;align-items:stretch;gap:1.2rem}.dash-right-panel{width:100%;min-width:100%;align-items:flex-start}.dash-logout-btn{min-width:140px}}
 
-      .form-group{margin-bottom:1rem}
-      .form-group label{display:block;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:.4rem;opacity:.85}
-      .form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,0.07);border:1px solid var(--border);color:#fff;padding:.7rem 1rem;font-family:'Rajdhani';font-size:.95rem;border-radius:2px;outline:none;transition:border-color .2s,background .2s}
-      .form-group input:focus,.form-group textarea:focus{border-color:var(--gold);background:rgba(255,255,255,0.09)}
-      .form-group select{cursor:pointer;appearance:none}
-      .form-group select option{background:#111;color:#fff}
-      .form-group textarea{min-height:100px;resize:vertical}
+.dash-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.dash-welcome{font-family:'Bebas Neue';font-size:2rem;letter-spacing:3px}
+.dash-welcome span{background:linear-gradient(135deg,var(--red),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.dash-role-tag{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+.dash-layout{display:grid;grid-template-columns:220px 1fr;gap:1.5rem;max-width:1400px;margin:0 auto}
+@media(max-width:900px){.dash-layout{grid-template-columns:1fr}}
+.dash-sidebar{display:flex;flex-direction:column;gap:.3rem}
+.dash-nav-btn{width:100%;text-align:left;padding:.75rem 1.2rem;background:transparent;border:1px solid transparent;color:var(--muted);font-family:'Rajdhani';font-size:.82rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s;display:flex;align-items:center;gap:.7rem}
+.dash-nav-btn:hover{border-color:var(--border);color:#fff}
+.dash-nav-btn.active{background:rgba(201,168,76,0.08);border-color:var(--gold);color:var(--gold)}
+.dash-content{min-height:60vh}
+.dash-module{display:none}.dash-module.active{display:block}
 
-      #auth-modal{position:fixed;inset:0;z-index:9998;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(0,0,0,.85);backdrop-filter:blur(8px)}
-      #auth-modal.open{display:flex}
-      .auth-box{width:100%;max-width:480px;padding:2.5rem;position:relative;animation:fadeUp .3s ease}
-      .auth-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;transition:color .2s}
-      .auth-close:hover{color:#fff}
-      .auth-logo{font-family:'Bebas Neue';font-size:2rem;letter-spacing:4px;text-align:center;margin-bottom:.3rem;background:linear-gradient(135deg,var(--red),var(--gold),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-      .auth-sub{text-align:center;font-size:.7rem;letter-spacing:3px;color:var(--muted);margin-bottom:1.5rem}
-      .auth-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:1.5rem}
-      .auth-tab{flex:1;padding:.7rem;text-align:center;cursor:pointer;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);transition:all .2s;border-bottom:2px solid transparent}
-      .auth-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
-      .auth-form{display:none}.auth-form.active{display:block}
-      .auth-msg{padding:.6rem 1rem;border-radius:2px;font-size:.85rem;margin-bottom:.8rem;display:none}
-      .auth-msg.error{background:rgba(255,30,30,0.1);border:1px solid var(--red);color:var(--red)}
-      .auth-msg.success{background:rgba(0,200,100,0.1);border:1px solid #00c864;color:#00c864}
+.stats-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;perspective:1200px}
+@media(max-width:600px){.stats-cards{grid-template-columns:1fr}}
+.stat-card{padding:1.6rem 1.5rem;position:relative;overflow:hidden;border-left:3px solid var(--gold);background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.02));box-shadow:0 18px 40px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08);transform:translateZ(0) rotateX(4deg);transform-style:preserve-3d;transition:transform .35s ease,box-shadow .35s ease}
+.stat-card:hover{transform:translateZ(20px) rotateX(0) scale(1.02);box-shadow:0 30px 60px rgba(0,0,0,.55),0 0 0 1px rgba(212,168,67,.35)}
+.stat-card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 60% at 50% 0%,rgba(255,255,255,.18),transparent 60%);mix-blend-mode:overlay}
+.stat-card:nth-child(2){border-left-color:var(--blue)}
+.stat-card:nth-child(3){border-left-color:var(--green)}
+.stat-card-label{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+.stat-card-value{font-family:'Bebas Neue';font-size:3.4rem;letter-spacing:2px;background:linear-gradient(135deg,#fff,#d4a843);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 4px 18px rgba(0,0,0,.35)}
+.nav-group{margin-top:.9rem;padding-top:.55rem;border-top:1px dashed rgba(255,255,255,.08)}
+.nav-group-label{font-size:.55rem;letter-spacing:3px;color:rgba(212,168,67,.75);padding:0 .4rem .35rem;text-transform:uppercase;font-weight:700}
 
-      #home-page{position:relative;overflow:hidden}
-      .hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding-top:64px}
-      .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 25% 50%,rgba(232,25,44,0.18) 0%,transparent 60%),radial-gradient(ellipse at 75% 50%,rgba(0,102,204,0.18) 0%,transparent 60%),radial-gradient(ellipse at 50% 100%,rgba(212,168,67,0.08) 0%,transparent 50%)}
-      .hero-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:60px 60px}
-      .hero-content{position:relative;text-align:center;z-index:2;animation:fadeUp .8s ease both}
-      .hero-eyebrow{font-size:.7rem;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-      .hero-title{font-family:'Bebas Neue';font-size:clamp(5rem,14vw,12rem);line-height:.9;letter-spacing:4px;margin-bottom:.5rem}
-      .hero-title .line1{display:block;color:#fff}
-      .hero-title .line2{display:block;background:linear-gradient(135deg,var(--red),var(--gold),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-      .hero-sub{font-size:clamp(1rem,3vw,1.8rem);font-weight:300;color:var(--muted);letter-spacing:4px;text-transform:uppercase;margin-bottom:2.5rem}
-      .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-      .match-vs{padding:5rem 2rem;text-align:center;position:relative}
-      .match-vs::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
-      .match-teams{display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
-      .team-side{display:flex;flex-direction:column;align-items:center;gap:1rem}
-      .team-crest{width:100px;height:100px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:2.5rem;border:2px solid}
-      .team-crest.red{border-color:var(--red);background:radial-gradient(circle,rgba(255,30,30,0.15),transparent);color:var(--red)}
-      .team-crest.blue{border-color:var(--blue);background:radial-gradient(circle,rgba(0,83,160,0.15),transparent);color:var(--blue)}
-      .team-name{font-family:'Bebas Neue';font-size:1.8rem;letter-spacing:4px}
-      .vs-badge{font-family:'Bebas Neue';font-size:3rem;color:var(--gold)}
-      .scroll-hint{text-align:center;padding:2rem;font-size:.75rem;letter-spacing:4px;color:var(--muted);text-transform:uppercase;animation:pulse 2s infinite}
+.table-wrap{overflow-x:auto}
+.data-table{width:100%;border-collapse:collapse;min-width:500px}
+.data-table th{padding:.7rem 1rem;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--border);text-align:left;white-space:nowrap}
+.data-table td{padding:.75rem 1rem;font-size:.85rem;color:var(--muted);border-bottom:1px solid rgba(255,255,255,0.03)}
+.data-table tr:hover td{color:#fff;background:rgba(255,255,255,0.02)}
+.badge{display:inline-block;padding:.2rem .6rem;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;border-radius:2px;font-weight:700}
+.badge-red{background:rgba(232,25,44,0.15);color:#ff6b79;border:1px solid rgba(232,25,44,0.3)}
+.badge-blue{background:rgba(0,102,204,0.15);color:#5babff;border:1px solid rgba(0,102,204,0.35)}
+.badge-gold{background:rgba(212,168,67,0.15);color:var(--gold-light);border:1px solid rgba(212,168,67,0.3)}
+.badge-green{background:rgba(0,212,106,0.12);color:#00d46a;border:1px solid rgba(0,212,106,0.25)}
+.badge-muted{background:rgba(255,255,255,0.05);color:var(--muted);border:1px solid var(--border)}
+.badge-orange{background:rgba(255,140,0,0.12);color:#ffac30;border:1px solid rgba(255,140,0,0.3)}
 
-      .inner-page{padding:100px 2rem 4rem;max-width:1200px;margin:0 auto}
-      .page-header{margin-bottom:3rem}
-      .page-header h1{font-family:'Bebas Neue';font-size:clamp(3rem,8vw,6rem);letter-spacing:3px;line-height:.9;margin-bottom:1rem}
-      .page-header h1 .line1{display:block;color:#ffffff}
-      .page-header h1 .line2{display:block;background:linear-gradient(135deg,var(--red),var(--gold),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-      .page-header p{color:var(--muted);max-width:600px;line-height:1.7;margin-top:.8rem}
+.chat-layout{display:grid;grid-template-columns:150px 1fr;gap:0;height:500px;overflow:hidden}
+.chat-channels{display:flex;flex-direction:column;gap:.4rem;padding:1rem;border-right:1px solid var(--border)}
+.chat-channels-label{font-size:.6rem;letter-spacing:3px;color:var(--muted);margin-bottom:.3rem}
+.chat-channel-btn{padding:.55rem .8rem;background:transparent;border:1px solid transparent;color:var(--muted);font-family:'Rajdhani';font-size:.78rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s;text-align:left}
+.chat-channel-btn.active{border-color:var(--gold);color:var(--gold)}
+.chat-main{display:flex;flex-direction:column;overflow:hidden}
+.chat-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.7rem}
+.chat-msg{display:flex;gap:.7rem;align-items:flex-start}
+.chat-msg-avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0}
+.chat-msg-body{flex:1;min-width:0}
+.chat-msg-meta{display:flex;align-items:center;gap:.5rem;margin-bottom:.15rem}
+.chat-msg-name{font-size:.72rem;font-weight:700;letter-spacing:1px}
+.chat-msg-time{font-size:.62rem;color:var(--muted)}
+.chat-msg-text{font-size:.85rem;color:var(--muted);line-height:1.5;word-break:break-word}
+.chat-input-row{display:flex;gap:.5rem;padding:.8rem 1rem;border-top:1px solid var(--border)}
+.chat-input-row input{flex:1;background:rgba(255,255,255,0.04);border:1px solid var(--border);color:#fff;padding:.55rem .9rem;font-family:'Rajdhani';font-size:.9rem;border-radius:2px;outline:none}
+.chat-input-row input:focus{border-color:var(--gold)}
 
-      .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem}
-      @media(max-width:768px){.about-grid{grid-template-columns:1fr}}
-      .about-card{padding:2rem;background:rgba(255,255,255,0.03);backdrop-filter:blur(12px);border-left:2px solid var(--gold);border-radius:4px}
-      .about-card h3{font-family:'Bebas Neue';font-size:1.8rem;letter-spacing:2px;margin-bottom:1rem;color:#ffffff}
-      .about-card p{color:var(--muted);line-height:1.8;font-size:0.9rem}
-      .about-card p strong{color:var(--gold);font-weight:600}
+.pitch{background:linear-gradient(180deg,#173a17,#0b200b);border-radius:4px;padding:1.5rem;position:relative;min-height:460px;border:1px solid rgba(255,255,255,0.08)}
+.pitch-lines{position:absolute;inset:12px;border:2px solid rgba(255,255,255,0.15);border-radius:2px;pointer-events:none}
+.pitch-lines::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,0.15)}
+.pitch-lines::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;border:1px solid rgba(255,255,255,0.15);border-radius:50%}
+.pitch-players{position:relative;z-index:2;display:flex;flex-direction:column;gap:.8rem;padding:.5rem}
+.pitch-row{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap}
+.pitch-slot{background:rgba(0,0,0,.5);border:2px solid rgba(255,255,255,0.2);border-radius:50%;width:52px;height:52px;display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;text-align:center;cursor:pointer;position:relative;color:var(--muted);flex-direction:column;transition:all .2s}
+.pitch-slot.filled{border-color:var(--gold);background:rgba(201,168,76,0.2);color:#fff}
+.pitch-slot .slot-num{font-family:'Bebas Neue';font-size:.9rem;color:var(--gold)}
+.pitch-slot .slot-name{font-size:.42rem;line-height:1.1;max-width:48px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pitch-pool{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.pool-player{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:.72rem;letter-spacing:1px;padding:.3rem .7rem;border-radius:2px;cursor:pointer;font-family:'Rajdhani';transition:all .2s}
+.pool-player:hover{background:rgba(201,168,76,0.2)}
+.pool-player.used{opacity:.35;pointer-events:none}
 
-      .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem}
-      @media(max-width:600px){.stats-row{grid-template-columns:repeat(2,1fr)}}
-      .stat-box{padding:1.5rem;text-align:center;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:4px}
-      .stat-num{font-family:'Bebas Neue';font-size:3rem;background:linear-gradient(135deg,var(--gold),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-      .stat-label{font-size:.7rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase}
+.dues-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+@media(max-width:600px){.dues-summary{grid-template-columns:1fr}}
+.dues-card{padding:1.4rem;border-radius:4px;text-align:center}
+.dues-card.paid{border:1px solid #00c864;background:rgba(0,200,100,0.05)}
+.dues-card.owed{border:1px solid var(--red);background:rgba(255,30,30,0.05)}
+.dues-card.neutral{border:1px solid var(--gold);background:rgba(201,168,76,0.05)}
+.dues-value{font-family:'Bebas Neue';font-size:2.5rem;line-height:1}
+.dues-value.green{color:#00c864}
+.dues-value.red{color:var(--red)}
+.dues-value.gold{color:var(--gold)}
+.dues-label{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+.dues-months-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.8rem;margin:1rem 0}
+.dues-month-pill{padding:.6rem 1rem;border-radius:20px;font-size:.75rem;letter-spacing:1px;text-align:center;border:1px solid var(--border);color:var(--muted)}
+.dues-month-pill.paid{border-color:#00c864;background:rgba(0,200,100,0.1);color:#00c864}
+.dues-month-pill.unpaid{border-color:rgba(255,30,30,0.4);background:rgba(255,30,30,0.06);color:var(--red)}
 
-      .team-header-container{max-width:1100px;margin:0 auto 2rem;padding:2rem 2.5rem;background:rgba(255,255,255,0.04);backdrop-filter:blur(12px);border:1px solid rgba(255,215,0,0.15);border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.4);position:relative;z-index:10}
-      .team-header-row{display:flex;justify-content:space-between;align-items:center;gap:2rem}
-      .team-header-row .page-header{max-width:65%}
+.league-card{padding:1.2rem 1.5rem;margin-bottom:.8rem;cursor:pointer;transition:border-color .2s;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.league-card:hover{border-color:var(--gold)}
+.league-title{font-family:'Bebas Neue';font-size:1.6rem;letter-spacing:2px}
+.league-meta{font-size:.72rem;color:var(--muted);margin-top:.3rem;letter-spacing:1px}
+.fixture-item{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;border-bottom:1px solid rgba(255,255,255,0.04);gap:1rem;flex-wrap:wrap}
+.fixture-teams{display:flex;align-items:center;gap:.8rem;font-size:.9rem;font-weight:600}
+.fixture-score{font-family:'Bebas Neue';font-size:1.3rem;color:var(--gold);min-width:60px;text-align:center}
+.fixture-date{font-size:.68rem;color:var(--muted);letter-spacing:1px}
+.quick-match-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;margin-bottom:1.5rem}
+.quick-score-input{font-family:'Bebas Neue';font-size:2.5rem;text-align:center;background:rgba(201,168,76,0.08);border:2px solid var(--gold);color:var(--gold);width:70px;padding:.3rem;border-radius:4px;outline:none}
+.quick-team-label{font-family:'Bebas Neue';font-size:1.2rem;letter-spacing:2px;text-align:center;padding:.5rem}
+.player-stat-mini{text-align:center}
+.player-stat-mini .num{font-family:'Bebas Neue';font-size:1.6rem;color:var(--gold)}
+.player-stat-mini .lbl{font-size:.6rem;letter-spacing:2px;color:var(--muted)}
+.totw-card{padding:1rem;text-align:center;transition:transform .2s}
+.totw-card:hover{transform:translateY(-3px)}
+.totw-pos{font-size:.6rem;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:.3rem}
+.totw-name{font-family:'Bebas Neue';font-size:1.1rem;letter-spacing:1px}
+.player-avatar-sm{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:1.4rem;color:var(--gold);background:rgba(201,168,76,0.08)}
 
-      /* FIX 2: .it-card was defined twice — removed first definition, kept this final one */
-      .it-card{width:280px;padding:2.5rem 2rem;border:2px solid var(--gold);border-radius:16px;text-align:center;background:rgba(212,168,67,0.08);box-shadow:0 0 40px rgba(212,168,67,0.3);transform:translateY(-10px)}
+#edit-modal,#league-modal,#match-result-modal{position:fixed;inset:0;z-index:9997;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);padding:1rem}
+#edit-modal.open,#league-modal.open,#match-result-modal.open{display:flex}
+.edit-box,.modal-box{width:100%;max-width:480px;padding:2rem;position:relative;animation:fadeUp .3s ease;max-height:90vh;overflow-y:auto}
+.modal-close{position:absolute;top:.8rem;right:.8rem;background:none;border:none;color:var(--muted);font-size:1.1rem;cursor:pointer}
 
-      /* FIX 3: .it-card .member-avatar was defined twice (160px then immediately 120px) — kept final 120px only */
-      .it-card .member-avatar{width:120px;height:120px;font-size:2.8rem;border-width:3px;border-color:var(--gold)}
+.section-title{font-family:'Bebas Neue';font-size:1.8rem;letter-spacing:3px;margin-bottom:1.5rem;line-height:0.9;text-transform:uppercase}
+.line1{display:block;color:#ffffff}
+.line2{display:block;background:linear-gradient(135deg,var(--red),var(--gold),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+strong{color:var(--gold)}
 
-      .compact-header h1{font-size:2.2rem}
-      .team-section-title{font-family:'Bebas Neue';font-size:2rem;letter-spacing:4px;margin:2.5rem 0 1.5rem;text-transform:uppercase;color:var(--gold);text-align:center}
-      .vertical-block{text-align:center;margin-bottom:3rem}
-      .member-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin-bottom:1.5rem}
-      .member-card{width:200px;padding:1.8rem 1.2rem;text-align:center;transition:transform .2s,border-color .2s;position:relative}
-      .member-card:hover{transform:translateY(-5px);border-color:var(--gold)}
+#toast{position:fixed;bottom:2rem;right:2rem;z-index:9999;display:flex;flex-direction:column;gap:.5rem;pointer-events:none}
+.toast-item{padding:.9rem 1.4rem;background:rgba(15,15,15,.97);border-radius:2px;font-size:.83rem;letter-spacing:1px;animation:slideIn .3s ease;min-width:240px;max-width:340px;pointer-events:auto}
+.toast-item.success{border-left:3px solid #00c864;color:#00c864}
+.toast-item.error{border-left:3px solid var(--red);color:var(--red)}
+.toast-item.info{border-left:3px solid var(--gold);color:var(--gold)}
 
-      /* FIX 4: .member-avatar was defined twice (72px then 100px) — kept final 100px only */
-      .member-avatar{width:100px;height:100px;border-radius:50%;margin:0 auto .8rem;object-fit:cover;border:2px solid var(--border);background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:2.2rem;color:var(--gold);overflow:hidden}
-      .member-avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.loader{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.1);border-top-color:var(--gold);border-radius:50%;animation:spin .6s linear infinite}
+.empty-state{text-align:center;padding:4rem 2rem;color:var(--muted)}
+.empty-state .icon{font-size:3rem;margin-bottom:1rem}
 
-      .member-name{font-family:'Bebas Neue';font-size:1.1rem;letter-spacing:2px;line-height:1.2}
-      .member-role{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:.3rem}
-      .member-team{font-size:.7rem;color:var(--muted);margin-top:.2rem}
-      .edit-member-btn{position:absolute;top:.5rem;right:.5rem;background:none;border:1px solid var(--border);color:var(--muted);font-size:.6rem;padding:.2rem .5rem;cursor:pointer;border-radius:2px;display:none;font-family:'Rajdhani';letter-spacing:1px;text-transform:uppercase;transition:all .2s}
-      .edit-member-btn:hover{border-color:var(--gold);color:var(--gold)}
-      .member-card:hover .edit-member-btn{display:block}
-      .captain-badge{display:inline-block;background:rgba(201,168,76,0.15);border:1px solid var(--gold);color:var(--gold);font-size:.55rem;letter-spacing:2px;padding:.15rem .4rem;border-radius:2px;text-transform:uppercase;margin-top:.3rem}
-      .status-badge{display:inline-block;font-size:.58rem;letter-spacing:1px;padding:.15rem .4rem;border-radius:2px;margin-top:.2rem;text-transform:uppercase}
-      .status-injured{background:rgba(255,30,30,0.15);border:1px solid var(--red);color:var(--red)}
-      .status-suspended{background:rgba(255,165,0,0.15);border:1px solid orange;color:orange}
+@media print{body{background:#fff;color:#000}#navbar,#toast,#auth-modal,#edit-modal,.dash-sidebar,.no-print{display:none!important}.pitch{background:#2d7a2d}}
 
-      .news-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-      @media(max-width:700px){.news-grid{grid-template-columns:1fr}}
-      .news-card{padding:1.5rem;cursor:pointer;transition:border-color .2s}
-      .news-card:hover{border-color:var(--gold)}
-      .news-date{font-size:.7rem;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:.5rem}
-      .news-card h3{font-family:'Bebas Neue';font-size:1.6rem;letter-spacing:2px;margin-bottom:.5rem}
-      .news-card p{color:var(--muted);font-size:.9rem;line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-      .news-author{font-size:.75rem;color:var(--muted);margin-top:.8rem}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes moduleEnter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+.new-item{animation:slideDown .3s ease}
+.dash-module.active{animation:moduleEnter .25s ease}
+.page{animation:none}
+.page.active{animation:fadeUp .3s ease both}
 
-      .media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
-      .media-item{border-radius:2px;overflow:hidden;position:relative;aspect-ratio:16/9;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center}
-      .media-item img{width:100%;height:100%;object-fit:cover}
-      .media-item video{width:100%;height:100%;object-fit:cover}
-      .media-item-label{position:absolute;bottom:0;left:0;right:0;padding:.5rem 1rem;background:linear-gradient(transparent,rgba(0,0,0,.85));font-size:.75rem;color:var(--muted)}
+/* ── DEVELOPER TICKER ── */
+#dev-ticker-wrap{position:fixed;bottom:0;left:0;right:0;z-index:990;height:32px;display:flex;align-items:stretch;background:rgba(5,5,5,0.96);border-top:1px solid rgba(201,168,76,0.35);backdrop-filter:blur(10px);overflow:hidden;user-select:none}
+#dev-ticker-label{flex-shrink:0;display:flex;align-items:center;padding:0 1rem;font-family:'Bebas Neue';font-size:.75rem;letter-spacing:3px;color:#000;background:linear-gradient(135deg,var(--gold),#7a5c1e);white-space:nowrap;border-right:1px solid rgba(201,168,76,0.5)}
+#dev-ticker-track{flex:1;overflow:hidden;position:relative;display:flex;align-items:center}
+#dev-ticker-content{display:inline-flex;align-items:center;gap:0;white-space:nowrap;animation:ticker-scroll 55s linear infinite;will-change:transform}
+#dev-ticker-wrap:hover #dev-ticker-content{animation-play-state:paused}
+.tkr{font-size:.72rem;letter-spacing:.5px;color:rgba(255,255,255,0.75);padding:0 .5rem}
+.tkr strong{color:var(--gold)}
+.tkr a{color:var(--gold);text-decoration:none}
+.tkr a:hover{text-decoration:underline}
+.tkr-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.5;flex-shrink:0;margin:0 .6rem}
+@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-      .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
-      @media(max-width:700px){.contact-grid{grid-template-columns:1fr}}
-      .contact-detail{display:flex;align-items:flex-start;gap:1rem;margin-top:1.2rem;padding:1rem;border-left:2px solid var(--gold)}
-      .contact-detail-label{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
-      .contact-detail-val{font-size:.95rem;color:var(--text)}
+/* ── SOCIAL LINKS ── */
+.social-links{display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap}
+.social-link{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;border:1px solid var(--border);color:var(--muted);text-decoration:none;font-size:1.1rem;transition:all .25s;background:rgba(255,255,255,0.03)}
+.social-link:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,0.08);transform:translateY(-2px)}
+.social-link.fb:hover{border-color:#1877f2;color:#1877f2}
+.social-link.wa:hover{border-color:#25d366;color:#25d366}
+.social-link.ig:hover{border-color:#e1306c;color:#e1306c}
+.social-link.tw:hover{border-color:#fff;color:#fff}
+.social-link.yt:hover{border-color:#ff0000;color:#ff0000}
 
-      .achievements-split{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
-      @media(max-width:768px){.achievements-split{grid-template-columns:1fr}}
-      .team-achievements{padding:2rem;border-top:2px solid var(--border)}
-      .team-achievements.red-theme{border-top-color:var(--red)}
-      .team-achievements.blue-theme{border-top-color:var(--blue)}
-      .ach-header{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
-      .ach-crest-sm{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:var(--glass);border:1px solid var(--border)}
-      .ach-club-name{font-family:'Bebas Neue';font-size:1.8rem;letter-spacing:2px}
-      .ach-list{display:flex;flex-direction:column;gap:1rem}
-      .ach-item{display:flex;align-items:center;gap:1.2rem;padding:1rem;background:rgba(255,255,255,0.02);border-radius:2px}
-      .ach-icon{font-size:1.5rem;opacity:0.8}
-      .ach-count{font-family:'Bebas Neue';font-size:1.8rem;color:var(--gold);line-height:1}
-      .ach-name{font-size:0.75rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
-      .section-line{height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin-top:0.5rem;width:100px}
+/* ── MEDIA GRID ── */
+.media-section-title{font-family:'Bebas Neue';font-size:1.4rem;letter-spacing:3px;color:var(--gold);margin:2rem 0 1rem;border-left:3px solid var(--gold);padding-left:.8rem}
+.media-grid-images{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;margin-bottom:2rem}
+.media-grid-videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin-bottom:2rem}
+.media-item{border-radius:4px;overflow:hidden;position:relative;background:rgba(255,255,255,0.03);cursor:pointer;transition:transform .2s,border-color .2s;border:1px solid var(--border)}
+.media-item:hover{transform:translateY(-3px);border-color:var(--gold)}
+.media-img-wrap{aspect-ratio:4/3;overflow:hidden;position:relative}
+.media-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.media-item:hover .media-img-wrap img{transform:scale(1.05)}
+.media-vid-wrap{aspect-ratio:16/9;overflow:hidden;position:relative}
+.media-vid-wrap iframe,.media-vid-wrap video{width:100%;height:100%;border:none}
+.media-item-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);transition:background .2s;pointer-events:none}
+.media-item:hover .media-item-overlay{background:rgba(0,0,0,0.3)}
+.media-play-icon{font-size:2.5rem;opacity:0;transition:opacity .2s}
+.media-item:hover .media-play-icon{opacity:1}
+.media-item-footer{padding:.6rem .8rem;display:flex;align-items:center;justify-content:space-between;font-size:.7rem;color:var(--muted)}
+.media-item-actions{display:flex;gap:.4rem}
+.media-item-actions button{background:none;border:1px solid var(--border);color:var(--muted);font-size:.6rem;padding:.2rem .5rem;border-radius:2px;cursor:pointer;font-family:'Rajdhani';letter-spacing:1px;transition:all .2s}
+.media-item-actions button:hover{border-color:var(--gold);color:var(--gold)}
+.media-item-actions .del-btn:hover{border-color:var(--red);color:var(--red)}
 
-      #dashboard-page{padding:80px 1.5rem 3rem}
-      #dashboard-page.active{display:block}
-      .dash-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
-      .dash-welcome{font-family:'Bebas Neue';font-size:2rem;letter-spacing:3px}
-      .dash-welcome span{background:linear-gradient(135deg,var(--red),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-      .dash-role-tag{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
-      .dash-layout{display:grid;grid-template-columns:220px 1fr;gap:1.5rem;max-width:1400px;margin:0 auto}
-      @media(max-width:900px){.dash-layout{grid-template-columns:1fr}}
-      .dash-sidebar{display:flex;flex-direction:column;gap:.3rem}
-      .dash-nav-btn{width:100%;text-align:left;padding:.75rem 1.2rem;background:transparent;border:1px solid transparent;color:var(--muted);font-family:'Rajdhani';font-size:.82rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s;display:flex;align-items:center;gap:.7rem}
-      .dash-nav-btn:hover{border-color:var(--border);color:#fff}
-      .dash-nav-btn.active{background:rgba(201,168,76,0.08);border-color:var(--gold);color:var(--gold)}
-      .dash-content{min-height:60vh}
-      .dash-module{display:none}.dash-module.active{display:block}
+/* ── LIGHTBOX ── */
+#media-lightbox{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;padding:2rem}
+#media-lightbox.open{display:flex}
+#media-lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:4px}
+#lightbox-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;z-index:10001}
 
-      .stats-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;perspective:1200px}
-      @media(max-width:600px){.stats-cards{grid-template-columns:1fr}}
-      .stat-card{padding:1.6rem 1.5rem;position:relative;overflow:hidden;border-left:3px solid var(--gold);background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.02));box-shadow:0 18px 40px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08);transform:translateZ(0) rotateX(4deg);transform-style:preserve-3d;transition:transform .35s ease,box-shadow .35s ease}
-      .stat-card:hover{transform:translateZ(20px) rotateX(0) scale(1.02);box-shadow:0 30px 60px rgba(0,0,0,.55),0 0 0 1px rgba(212,168,67,.35)}
-      .stat-card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 60% at 50% 0%,rgba(255,255,255,.18),transparent 60%);mix-blend-mode:overlay}
-      .stat-card:nth-child(2){border-left-color:var(--blue)}
-      .stat-card:nth-child(3){border-left-color:var(--green)}
-      .stat-card-label{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
-      .stat-card-value{font-family:'Bebas Neue';font-size:3.4rem;letter-spacing:2px;background:linear-gradient(135deg,#fff,#d4a843);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 4px 18px rgba(0,0,0,.35)}
-      .nav-group{margin-top:.9rem;padding-top:.55rem;border-top:1px dashed rgba(255,255,255,.08)}
-      .nav-group-label{font-size:.55rem;letter-spacing:3px;color:rgba(212,168,67,.75);padding:0 .4rem .35rem;text-transform:uppercase;font-weight:700}
+/* ── BACKGROUND ROTATOR ── */
+.bg-rotator{position:fixed;inset:0;z-index:-1}
+.bg-slide{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;opacity:0;transition:opacity 1.8s ease;filter:contrast(1.08) brightness(.55) saturate(1.0)}
+.bg-slide.active{opacity:1}
+.bg-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(0,0,0,0.55) 0%,rgba(8,10,14,0.72) 50%,rgba(0,0,0,0.6) 100%),radial-gradient(circle at 50% 0%,rgba(212,168,67,0.06),transparent 60%)}
 
-      .table-wrap{overflow-x:auto}
-      .data-table{width:100%;border-collapse:collapse;min-width:500px}
-      .data-table th{padding:.7rem 1rem;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--border);text-align:left;white-space:nowrap}
-      .data-table td{padding:.75rem 1rem;font-size:.85rem;color:var(--muted);border-bottom:1px solid rgba(255,255,255,0.03)}
-      .data-table tr:hover td{color:#fff;background:rgba(255,255,255,0.02)}
-      .badge{display:inline-block;padding:.2rem .6rem;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;border-radius:2px;font-weight:700}
-      .badge-red{background:rgba(232,25,44,0.15);color:#ff6b79;border:1px solid rgba(232,25,44,0.3)}
-      .badge-blue{background:rgba(0,102,204,0.15);color:#5babff;border:1px solid rgba(0,102,204,0.35)}
-      .badge-gold{background:rgba(212,168,67,0.15);color:var(--gold-light);border:1px solid rgba(212,168,67,0.3)}
-      .badge-green{background:rgba(0,212,106,0.12);color:#00d46a;border:1px solid rgba(0,212,106,0.25)}
-      .badge-muted{background:rgba(255,255,255,0.05);color:var(--muted);border:1px solid var(--border)}
-      .badge-orange{background:rgba(255,140,0,0.12);color:#ffac30;border:1px solid rgba(255,140,0,0.3)}
+/* ── SESSION BANNER ── */
+#session-warning{position:fixed;top:64px;left:0;right:0;z-index:998;background:rgba(255,30,30,0.9);color:#fff;padding:.6rem 2rem;font-size:.8rem;letter-spacing:1px;text-align:center;display:none}
+#session-warning button{background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.4);color:#fff;padding:.2rem .8rem;font-family:'Rajdhani';font-size:.75rem;letter-spacing:1px;border-radius:2px;cursor:pointer;margin-left:1rem}
 
-      .chat-layout{display:grid;grid-template-columns:150px 1fr;gap:0;height:500px;overflow:hidden}
-      .chat-channels{display:flex;flex-direction:column;gap:.4rem;padding:1rem;border-right:1px solid var(--border)}
-      .chat-channels-label{font-size:.6rem;letter-spacing:3px;color:var(--muted);margin-bottom:.3rem}
-      .chat-channel-btn{padding:.55rem .8rem;background:transparent;border:1px solid transparent;color:var(--muted);font-family:'Rajdhani';font-size:.78rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s;text-align:left}
-      .chat-channel-btn.active{border-color:var(--gold);color:var(--gold)}
-      .chat-main{display:flex;flex-direction:column;overflow:hidden}
-      .chat-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.7rem}
-      .chat-msg{display:flex;gap:.7rem;align-items:flex-start}
-      .chat-msg-avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0}
-      .chat-msg-body{flex:1;min-width:0}
-      .chat-msg-meta{display:flex;align-items:center;gap:.5rem;margin-bottom:.15rem}
-      .chat-msg-name{font-size:.72rem;font-weight:700;letter-spacing:1px}
-      .chat-msg-time{font-size:.62rem;color:var(--muted)}
-      .chat-msg-text{font-size:.85rem;color:var(--muted);line-height:1.5;word-break:break-word}
-      .chat-input-row{display:flex;gap:.5rem;padding:.8rem 1rem;border-top:1px solid var(--border)}
-      .chat-input-row input{flex:1;background:rgba(255,255,255,0.04);border:1px solid var(--border);color:#fff;padding:.55rem .9rem;font-family:'Rajdhani';font-size:.9rem;border-radius:2px;outline:none}
-      .chat-input-row input:focus{border-color:var(--gold)}
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links{display:none !important}.hamburger{display:flex !important}.nav-enter{display:none !important}#nav-user-info{display:none!important}
+  .team-header-row{flex-direction:column}.it-card{width:100%;transform:none}.contact-grid{grid-template-columns:1fr}
+  .chat-layout{grid-template-columns:1fr;height:auto}.chat-channels{flex-direction:row;flex-wrap:wrap;border-right:none;border-bottom:1px solid var(--border)}
+  .dash-layout{grid-template-columns:1fr}.inner-page{padding:90px 1rem 3rem}.media-grid-videos{grid-template-columns:1fr}
+  .hero-content{padding:0 1.5rem;width:100%}.hero-eyebrow{font-size:.65rem;letter-spacing:4px;text-align:center}
+  .hero-title{text-align:center}.hero-sub{text-align:center;font-size:1rem;letter-spacing:2px}
+  .hero-btns{justify-content:center;gap:.75rem}.hero-btns .btn{padding:.65rem 1.4rem;font-size:.8rem}
+}
+@media(max-width:500px){.stats-cards{grid-template-columns:1fr 1fr}.news-grid{grid-template-columns:1fr}.match-teams{gap:1.5rem}}
 
-      .pitch{background:linear-gradient(180deg,#173a17,#0b200b);border-radius:4px;padding:1.5rem;position:relative;min-height:460px;border:1px solid rgba(255,255,255,0.08)}
-      .pitch-lines{position:absolute;inset:12px;border:2px solid rgba(255,255,255,0.15);border-radius:2px;pointer-events:none}
-      .pitch-lines::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,0.15)}
-      .pitch-lines::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;border:1px solid rgba(255,255,255,0.15);border-radius:50%}
-      .pitch-players{position:relative;z-index:2;display:flex;flex-direction:column;gap:.8rem;padding:.5rem}
-      .pitch-row{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap}
-      .pitch-slot{background:rgba(0,0,0,.5);border:2px solid rgba(255,255,255,0.2);border-radius:50%;width:52px;height:52px;display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;text-align:center;cursor:pointer;position:relative;color:var(--muted);flex-direction:column;transition:all .2s}
-      .pitch-slot.filled{border-color:var(--gold);background:rgba(201,168,76,0.2);color:#fff}
-      .pitch-slot .slot-num{font-family:'Bebas Neue';font-size:.9rem;color:var(--gold)}
-      .pitch-slot .slot-name{font-size:.42rem;line-height:1.1;max-width:48px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-      .pitch-pool{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
-      .pool-player{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:.72rem;letter-spacing:1px;padding:.3rem .7rem;border-radius:2px;cursor:pointer;font-family:'Rajdhani';transition:all .2s}
-      .pool-player:hover{background:rgba(201,168,76,0.2)}
-      .pool-player.used{opacity:.35;pointer-events:none}
+/* ── FOOTER ── */
+#site-footer{position:relative;z-index:1;background:rgba(3,3,3,0.97);border-top:1px solid var(--border);padding:1.5rem 2rem 52px;text-align:center}
+.footer-copy{font-size:.68rem;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;line-height:2}
+.footer-copy strong{color:var(--gold)}
+.footer-divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:.6rem auto}
 
-      .dues-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem}
-      @media(max-width:600px){.dues-summary{grid-template-columns:1fr}}
-      .dues-card{padding:1.4rem;border-radius:4px;text-align:center}
-      .dues-card.paid{border:1px solid #00c864;background:rgba(0,200,100,0.05)}
-      .dues-card.owed{border:1px solid var(--red);background:rgba(255,30,30,0.05)}
-      .dues-card.neutral{border:1px solid var(--gold);background:rgba(201,168,76,0.05)}
-      .dues-value{font-family:'Bebas Neue';font-size:2.5rem;line-height:1}
-      .dues-value.green{color:#00c864}
-      .dues-value.red{color:var(--red)}
-      .dues-value.gold{color:var(--gold)}
-      .dues-label{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
-      .dues-months-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.8rem;margin:1rem 0}
-      .dues-month-pill{padding:.6rem 1rem;border-radius:20px;font-size:.75rem;letter-spacing:1px;text-align:center;border:1px solid var(--border);color:var(--muted)}
-      .dues-month-pill.paid{border-color:#00c864;background:rgba(0,200,100,0.1);color:#00c864}
-      .dues-month-pill.unpaid{border-color:rgba(255,30,30,0.4);background:rgba(255,30,30,0.06);color:var(--red)}
+/* ── CUSTOM ALERTS ── */
+#custom-alert-overlay{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.88);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:1rem}
+#custom-alert-overlay.open{display:flex}
+.custom-alert-box{width:100%;max-width:420px;padding:2.5rem 2rem;position:relative;background:rgba(13,17,23,0.98);border:1px solid rgba(212,168,67,0.35);border-radius:4px;animation:fadeUp .25s ease;box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 0 1px rgba(212,168,67,0.1)}
+.custom-alert-icon{font-size:2.5rem;text-align:center;margin-bottom:1rem}
+.custom-alert-title{font-family:'Bebas Neue';font-size:1.8rem;letter-spacing:3px;text-align:center;margin-bottom:.6rem;color:#fff}
+.custom-alert-msg{color:rgba(255,255,255,.65);font-size:.9rem;line-height:1.7;text-align:center;margin-bottom:1.5rem}
+.custom-alert-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+</style>
+</head>
+<body>
+   <!-- CUSTOM ALERT MODAL (replaces browser confirm/alert/prompt) -->
+  <div id="custom-alert-overlay">
+    <div class="custom-alert-box glass">
+      <div class="custom-alert-icon" id="cal-icon">⚠️</div>
+      <div class="custom-alert-title" id="cal-title">CONFIRM</div>
+      <div class="custom-alert-msg" id="cal-msg"></div>
+      <div class="custom-alert-btns" id="cal-btns"></div>
+    </div>
+</div>
 
-      .league-card{padding:1.2rem 1.5rem;margin-bottom:.8rem;cursor:pointer;transition:border-color .2s;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-      .league-card:hover{border-color:var(--gold)}
-      .league-title{font-family:'Bebas Neue';font-size:1.6rem;letter-spacing:2px}
-      .league-meta{font-size:.72rem;color:var(--muted);margin-top:.3rem;letter-spacing:1px}
-      .fixture-item{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;border-bottom:1px solid rgba(255,255,255,0.04);gap:1rem;flex-wrap:wrap}
-      .fixture-teams{display:flex;align-items:center;gap:.8rem;font-size:.9rem;font-weight:600}
-      .fixture-score{font-family:'Bebas Neue';font-size:1.3rem;color:var(--gold);min-width:60px;text-align:center}
-      .fixture-date{font-size:.68rem;color:var(--muted);letter-spacing:1px}
-      .quick-match-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;margin-bottom:1.5rem}
-      .quick-score-input{font-family:'Bebas Neue';font-size:2.5rem;text-align:center;background:rgba(201,168,76,0.08);border:2px solid var(--gold);color:var(--gold);width:70px;padding:.3rem;border-radius:4px;outline:none}
-      .quick-team-label{font-family:'Bebas Neue';font-size:1.2rem;letter-spacing:2px;text-align:center;padding:.5rem}
-      .player-stat-mini{text-align:center}
-      .player-stat-mini .num{font-family:'Bebas Neue';font-size:1.6rem;color:var(--gold)}
-      .player-stat-mini .lbl{font-size:.6rem;letter-spacing:2px;color:var(--muted)}
-      .totw-card{padding:1rem;text-align:center;transition:transform .2s}
-      .totw-card:hover{transform:translateY(-3px)}
-      .totw-pos{font-size:.6rem;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:.3rem}
-      .totw-name{font-family:'Bebas Neue';font-size:1.1rem;letter-spacing:1px}
-      .player-avatar-sm{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:1.4rem;color:var(--gold);background:rgba(201,168,76,0.08)}
-
-      #edit-modal,#league-modal,#match-result-modal{position:fixed;inset:0;z-index:9997;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);padding:1rem}
-      #edit-modal.open,#league-modal.open,#match-result-modal.open{display:flex}
-      .edit-box,.modal-box{width:100%;max-width:480px;padding:2rem;position:relative;animation:fadeUp .3s ease;max-height:90vh;overflow-y:auto}
-      .modal-close{position:absolute;top:.8rem;right:.8rem;background:none;border:none;color:var(--muted);font-size:1.1rem;cursor:pointer}
-
-      .section-title{font-family:'Bebas Neue';font-size:1.8rem;letter-spacing:3px;margin-bottom:1.5rem;line-height:0.9;text-transform:uppercase}
-      .line1{display:block;color:#ffffff}
-      .line2{display:block;background:linear-gradient(135deg,var(--red),var(--gold),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-      strong{color:var(--gold)}
-
-      #toast{position:fixed;bottom:2rem;right:2rem;z-index:9999;display:flex;flex-direction:column;gap:.5rem;pointer-events:none}
-      .toast-item{padding:.9rem 1.4rem;background:rgba(15,15,15,.97);border-radius:2px;font-size:.83rem;letter-spacing:1px;animation:slideIn .3s ease;min-width:240px;max-width:340px;pointer-events:auto}
-      .toast-item.success{border-left:3px solid #00c864;color:#00c864}
-      .toast-item.error{border-left:3px solid var(--red);color:var(--red)}
-      .toast-item.info{border-left:3px solid var(--gold);color:var(--gold)}
-
-      .loader{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.1);border-top-color:var(--gold);border-radius:50%;animation:spin .6s linear infinite}
-      .empty-state{text-align:center;padding:4rem 2rem;color:var(--muted)}
-      .empty-state .icon{font-size:3rem;margin-bottom:1rem}
-
-      @media print{
-        body{background:#fff;color:#000}
-        #navbar,#toast,#auth-modal,#edit-modal,.dash-sidebar,.no-print{display:none!important}
-        .pitch{background:#2d7a2d}
-      }
-
-      @keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
-      @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-      @keyframes slideIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
-      @keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
-      @keyframes spin{to{transform:rotate(360deg)}}
-      @keyframes moduleEnter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-      @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
-      .new-item{animation:slideDown .3s ease}
-      .dash-module.active{animation:moduleEnter .25s ease}
-      .page{animation:none}
-      .page.active{animation:fadeUp .3s ease both}
-   
-      /* ── DEVELOPER TICKER ── */
-      #dev-ticker-wrap{position:fixed;bottom:0;left:0;right:0;z-index:990;height:32px;display:flex;align-items:stretch;background:rgba(5,5,5,0.96);border-top:1px solid rgba(201,168,76,0.35);backdrop-filter:blur(10px);overflow:hidden;user-select:none}
-      #dev-ticker-label{flex-shrink:0;display:flex;align-items:center;padding:0 1rem;font-family:'Bebas Neue';font-size:.75rem;letter-spacing:3px;color:#000;background:linear-gradient(135deg,var(--gold),#7a5c1e);white-space:nowrap;border-right:1px solid rgba(201,168,76,0.5)}
-      #dev-ticker-track{flex:1;overflow:hidden;position:relative;display:flex;align-items:center}
-      #dev-ticker-content{display:inline-flex;align-items:center;gap:0;white-space:nowrap;animation:ticker-scroll 55s linear infinite;will-change:transform}
-      #dev-ticker-wrap:hover #dev-ticker-content{animation-play-state:paused}
-      .tkr{font-size:.72rem;letter-spacing:.5px;color:rgba(255,255,255,0.75);padding:0 .5rem}
-      .tkr strong{color:var(--gold)}
-      .tkr a{color:var(--gold);text-decoration:none}
-      .tkr a:hover{text-decoration:underline}
-      .tkr-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.5;flex-shrink:0;margin:0 .6rem}
-      @keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-      /* ── SOCIAL MEDIA ICONS ── */
-      .social-links{display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap}
-      .social-link{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;border:1px solid var(--border);color:var(--muted);text-decoration:none;font-size:1.1rem;transition:all .25s;background:rgba(255,255,255,0.03)}
-      .social-link:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,0.08);transform:translateY(-2px)}
-      .social-link.fb:hover{border-color:#1877f2;color:#1877f2}
-      .social-link.wa:hover{border-color:#25d366;color:#25d366}
-      .social-link.ig:hover{border-color:#e1306c;color:#e1306c}
-      .social-link.tw:hover{border-color:#fff;color:#fff}
-      .social-link.yt:hover{border-color:#ff0000;color:#ff0000}
-
-      /* ── MEDIA GRID UPGRADE ── */
-      .media-section-title{font-family:'Bebas Neue';font-size:1.4rem;letter-spacing:3px;color:var(--gold);margin:2rem 0 1rem;border-left:3px solid var(--gold);padding-left:.8rem}
-      .media-grid-images{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;margin-bottom:2rem}
-      .media-grid-videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin-bottom:2rem}
-      .media-item{border-radius:4px;overflow:hidden;position:relative;background:rgba(255,255,255,0.03);cursor:pointer;transition:transform .2s,border-color .2s;border:1px solid var(--border)}
-      .media-item:hover{transform:translateY(-3px);border-color:var(--gold)}
-      .media-img-wrap{aspect-ratio:4/3;overflow:hidden;position:relative}
-      .media-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-      .media-item:hover .media-img-wrap img{transform:scale(1.05)}
-      .media-vid-wrap{aspect-ratio:16/9;overflow:hidden;position:relative}
-      .media-vid-wrap iframe,.media-vid-wrap video{width:100%;height:100%;border:none}
-      .media-item-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);transition:background .2s;pointer-events:none}
-      .media-item:hover .media-item-overlay{background:rgba(0,0,0,0.3)}
-      .media-play-icon{font-size:2.5rem;opacity:0;transition:opacity .2s}
-      .media-item:hover .media-play-icon{opacity:1}
-      .media-item-footer{padding:.6rem .8rem;display:flex;align-items:center;justify-content:space-between;font-size:.7rem;color:var(--muted)}
-      .media-item-actions{display:flex;gap:.4rem}
-      .media-item-actions button{background:none;border:1px solid var(--border);color:var(--muted);font-size:.6rem;padding:.2rem .5rem;border-radius:2px;cursor:pointer;font-family:'Rajdhani';letter-spacing:1px;transition:all .2s}
-      .media-item-actions button:hover{border-color:var(--gold);color:var(--gold)}
-      .media-item-actions .del-btn:hover{border-color:var(--red);color:var(--red)}
-
-      /* ── LIGHTBOX ── */
-      #media-lightbox{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;padding:2rem}
-      #media-lightbox.open{display:flex}
-      #media-lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:4px}
-      #lightbox-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;z-index:10001}
-
-      /* ── BACKGROUND ROTATOR ── */
-      .bg-rotator{position:fixed;inset:0;z-index:-1}
-      .bg-slide{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;opacity:0;transition:opacity 1.8s ease;filter:contrast(1.08) brightness(.55) saturate(1.0)}
-      .bg-slide.active{opacity:1}
-      .bg-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(0,0,0,0.55) 0%,rgba(8,10,14,0.72) 50%,rgba(0,0,0,0.6) 100%),radial-gradient(circle at 50% 0%,rgba(212,168,67,0.06),transparent 60%)}
-
-      /* ── SESSION TIMEOUT BANNER ── */
-      #session-warning{position:fixed;top:64px;left:0;right:0;z-index:998;background:rgba(255,30,30,0.9);color:#fff;padding:.6rem 2rem;font-size:.8rem;letter-spacing:1px;text-align:center;display:none}
-      #session-warning button{background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.4);color:#fff;padding:.2rem .8rem;font-family:'Rajdhani';font-size:.75rem;letter-spacing:1px;border-radius:2px;cursor:pointer;margin-left:1rem}
-
-      /* ── SINGLE RESPONSIVE BLOCK ── */
-      /* FIX 5: @media(max-width:850px) block was turning .nav-links into a sidebar
-         conflicting with .mobile-nav. Removed that system. .mobile-nav is the sole mobile menu. */
-      @media(max-width:768px){
-        .nav-links{display:none !important;}
-        .hamburger{display:flex !important;}
-        .nav-enter{display:none !important;}
-        #nav-user-info{display:none!important}
-        .team-header-row{flex-direction:column}
-        .it-card{width:100%;transform:none}
-        .contact-grid{grid-template-columns:1fr}
-        .chat-layout{grid-template-columns:1fr;height:auto}
-        .chat-channels{flex-direction:row;flex-wrap:wrap;border-right:none;border-bottom:1px solid var(--border)}
-        .dash-layout{grid-template-columns:1fr}
-        .inner-page{padding:90px 1rem 3rem}
-        .media-grid-videos{grid-template-columns:1fr}
-        .hero-content{padding:0 1.5rem;width:100%}
-        .hero-eyebrow{font-size:.65rem;letter-spacing:4px;text-align:center}
-        .hero-title{text-align:center}
-        .hero-sub{text-align:center;font-size:1rem;letter-spacing:2px}
-        .hero-btns{justify-content:center;gap:.75rem}
-        .hero-btns .btn{padding:.65rem 1.4rem;font-size:.8rem}
-      }
-      @media(max-width:500px){
-        .stats-cards{grid-template-columns:1fr 1fr}
-        .news-grid{grid-template-columns:1fr}
-        .match-teams{gap:1.5rem}
-      }
-
-      /* ── FOOTER ── */
-      #site-footer{position:relative;z-index:1;background:rgba(3,3,3,0.97);border-top:1px solid var(--border);padding:1.5rem 2rem 52px;text-align:center;}
-      .footer-copy{font-size:.68rem;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;line-height:2;}
-      .footer-copy strong{color:var(--gold)}
-      .footer-divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:.6rem auto;}
-
-      </style>
-      </head>
-      <body>
-
-      <!-- CUSTOM ALERT MODAL -->
-      <div id="custom-alert-overlay">
-        <div class="custom-alert-box glass">
-          <div class="custom-alert-icon" id="cal-icon">⚠️</div>
-          <div class="custom-alert-title" id="cal-title">CONFIRM</div>
-          <div class="custom-alert-msg" id="cal-msg"></div>
-          <div class="custom-alert-btns" id="cal-btns"></div>
-        </div>
-      </div>
-
-      <!-- PROFILE MODAL -->
+<!-- PROFILE MODAL -->
       <div id="profile-modal">
         <div class="profile-modal-box glass">
           <button onclick="closeProfileModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer">✕</button>
@@ -633,8 +521,7 @@
       <!-- SESSION WARNING BANNER -->
       <div id="session-warning">⚠️ Session expiring soon due to inactivity. <button onclick="extendSession()">Stay Logged In</button></div>
 
-      <!-- NAVBAR -->
-      <nav id="navbar">
+     <nav id="navbar">
         <div class="nav-logo-container">
           <div class="nav-crest-gold-ring" onclick="openFullscreenLogo('https://koolasamuel-cell.github.io/Sansior-Football-Club-Family/logo.png')">
             <div class="crest-glow-overlay"></div>
@@ -647,25 +534,34 @@
           </div>
         </div>
 
-        <ul class="nav-links">
-          <li><a onclick="showPage('home')" data-page="home">Home</a></li>
-          <li><a onclick="showPage('about')" data-page="about">About</a></li>
-          <li><a onclick="showPage('team')" data-page="team">Team</a></li>
-          <li><a onclick="showPage('media')" data-page="media">Media</a></li>
-          <li><a onclick="showPage('news')" data-page="news">News</a></li>
-          <li><a onclick="showPage('achievements')" data-page="achievements">Achievements</a></li>
-          <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
-        </ul>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a onclick="showPage('home')" data-page="home">Home</a></li>
+            <li><a onclick="showPage('about')" data-page="about">About</a></li>
+            <li><a onclick="showPage('team')" data-page="team">Team</a></li>
+            <li><a onclick="showPage('media')" data-page="media">Media</a></li>
+            <li><a onclick="showPage('news')" data-page="news">News</a></li>
+            <li><a onclick="showPage('achievements')" data-page="achievements">Achievements</a></li>
+            <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
+          </ul>
+        </div>
 
-        <div class="nav-right">
+        <div class="nav-right" style="display: flex; align-items: center; gap: 12px;">
           <button class="nav-enter" id="nav-enter-btn" onclick="openAuth()">🔑 Enter System</button>
+          
+          <span class="logo-divider"></span>
+          
+          <button class="dash-logout-btn" id="nav-logout-btn" onclick="doLogout()" style="background: #e8192c; border: 1px solid #ff4d4d; border-radius: 8px; color: #fff; padding: 0.6rem 1.2rem; font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 1px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 0 15px rgba(232, 25, 44, 0.4); text-transform: uppercase; transition: all 0.3s ease;">
+            <span class="logout-icon" style="font-size: 1.1rem; line-height: 1;">⎋</span>
+            <span class="logout-text">Logout</span>
+          </button>
+
           <button class="hamburger" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Menu">
             <span></span><span></span><span></span>
           </button>
         </div>
       </nav>
 
-      <!-- MOBILE NAV -->
       <div class="mobile-nav" id="mobile-nav">
         <div class="mobile-logo-header">
           <div class="nav-logo-container" style="justify-content:center;padding:20px 0;">
@@ -688,11 +584,11 @@
           <li><a onclick="showPage('news');closeMobileNav()" data-page="news">News</a></li>
           <li><a onclick="showPage('achievements');closeMobileNav()" data-page="achievements">Achievements</a></li>
           <li><a onclick="showPage('contact');closeMobileNav()" data-page="contact">Contact</a></li>
-          <li><a onclick="openAuth();closeMobileNav()">🔑 Enter System</a></li>
+          <li id="mobile-enter-item"><a onclick="openAuth();closeMobileNav()">🔑 Enter System</a></li>
+          <li id="mobile-logout-item" style="display: none;"><a onclick="doLogout();closeMobileNav()" style="color: #ff4d4d; font-weight: bold;">⎋ Logout</a></li>
         </ul>
       </div>
 
-      <!-- FIX 6: #logo-overlay existed TWICE with same id. Removed the duplicate. Kept one. -->
       <div id="logo-overlay" onclick="this.style.display='none'" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:9999;justify-content:center;align-items:center;cursor:zoom-out;">
         <img id="overlay-img" style="max-width:90%;max-height:85%;border:3px solid #d4a843;border-radius:15px;box-shadow:0 0 60px rgba(212,168,67,0.6);">
       </div>
@@ -1169,229 +1065,224 @@
   }
 
  /* =========================================================
-   SECURE PASSWORD RECOVERY SYSTEM
+   SECURE PASSWORD RECOVERY SYSTEM (UPDATED UI & COUNTDOWN)
 ========================================================= */
 
 /* OPEN RECOVERY FORM */
 window.showForgotPasswordForm = function() {
   document.getElementById('login-form').classList.remove('active');
   document.getElementById('register-form').classList.remove('active');
-
   document.getElementById('auth-tabs-container').style.display = 'none';
-
   document.getElementById('forgot-form').classList.add('active');
-
   document.getElementById('forgot-msg').style.display = 'none';
-
   resetRecoveryUI();
 }
 
 /* CLOSE RECOVERY FORM */
 window.hideForgotPasswordForm = function() {
   document.getElementById('forgot-form').classList.remove('active');
-
   document.getElementById('auth-tabs-container').style.display = 'flex';
-
   document.getElementById('login-form').classList.add('active');
-
   document.getElementById('tab-register').classList.remove('active');
   document.getElementById('tab-login').classList.add('active');
-
   resetRecoveryUI();
 }
 
-/* RESET UI */
+/* RESET UI TO ORIGINAL STATE */
 window.resetRecoveryUI = function() {
   document.getElementById('recovery-step-1').style.display = 'block';
   document.getElementById('recovery-step-2').style.display = 'none';
 
-  document.getElementById('f-identity').value = '';
-  document.getElementById('f-otp').value = '';
-  document.getElementById('f-new-password').value = '';
-  document.getElementById('f-confirm-password').value = '';
+  // 1. RESTORE the form layout FIRST so the inputs definitely exist in the DOM
+  const step2Container = document.getElementById('recovery-step-2');
+  if (step2Container) {
+    step2Container.innerHTML = `
+      <div class="form-group">
+        <label>Enter OTP</label>
+        <input id="f-otp" type="text" placeholder="Enter OTP code" autocomplete="off" />
+      </div>
+      <div class="form-group">
+        <label>New Password</label>
+        <input id="f-new-password" type="password" placeholder="Enter new password" autocomplete="new-password" />
+      </div>
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input id="f-confirm-password" type="password" placeholder="Confirm new password" autocomplete="new-password" />
+      </div>
+      <div style="display:flex;gap:10px;margin-top:20px;">
+        <button type="button" class="btn" style="flex:1;background:#222;color:#fff;border:1px solid #333;justify-content:center;clip-path:none;border-radius:2px;" onclick="backToRecoveryStep1()">
+          Back
+        </button>
+        <button type="button" id="f-submit-reset-btn" class="btn btn-blue" style="flex:1;justify-content:center;clip-path:none;border-radius:2px;" onclick="verifyRecoveryOTP()">
+          Reset Password
+        </button>
+      </div>
+    `;
+  }
 
+  // 2. NOW safely clear the inputs (added ?. just in case an ID is missing elsewhere)
+  if (document.getElementById('f-identity')) document.getElementById('f-identity').value = '';
+  if (document.getElementById('f-otp')) document.getElementById('f-otp').value = '';
+  if (document.getElementById('f-new-password')) document.getElementById('f-new-password').value = '';
+  if (document.getElementById('f-confirm-password')) document.getElementById('f-confirm-password').value = '';
 }
 
 /* BACK BUTTON */
 window.backToRecoveryStep1 = function() {
-
   document.getElementById('recovery-step-1').style.display = 'block';
   document.getElementById('recovery-step-2').style.display = 'none';
-
+  document.getElementById('forgot-msg').style.display = 'none';
 }
-/* SHOW MESSAGE */
+
+/* SHOW NOTIFICATION MESSAGE */
 window.recoveryMessage = function(type, text) {
   const box = document.getElementById('forgot-msg');
+  if (!box) return;
 
   box.style.display = 'block';
 
   if (type === 'success') {
-
     box.style.background = 'rgba(0,212,106,0.08)';
     box.style.border = '1px solid rgba(0,212,106,0.3)';
     box.style.color = '#00d46a';
-
   } else {
-
     box.style.background = 'rgba(255,0,0,0.08)';
     box.style.border = '1px solid rgba(255,0,0,0.3)';
     box.style.color = '#ff4d4d';
-
   }
 
   box.style.padding = '12px';
   box.style.borderRadius = '6px';
+  box.style.marginBottom = '15px';
   box.innerHTML = text;
-
 }
 
 /* =========================================================
-   SEND OTP
+   SEND OTP ACTION
 ========================================================= */
-
 window.sendRecoveryOTP = async function() {
   const identity = document.getElementById('f-identity').value.trim();
 
   if (!identity) {
-
     recoveryMessage('error', 'Enter your email or phone number.');
     return;
-
   }
 
-  recoveryMessage('success', 'Sending OTP...');
+  recoveryMessage('success', 'Sending verification code...');
 
   try {
+    const result = await api('sendRecoveryOTP', { identity });
 
-    const result = await api('sendRecoveryOTP', {
-      identity
-    });
-
-    if (!result.success) {
-
-      recoveryMessage('error', result.message || 'Account not found.');
+    if (!result || !result.success) {
+      recoveryMessage('error', (result && result.message) ? result.message : 'Account not found.');
       return;
-
     }
 
-    recoveryMessage(
-      'success',
-      'OTP sent successfully. Check your email or phone.'
-    );
+    recoveryMessage('success', 'OTP sent successfully! Check your email inbox.');
 
     document.getElementById('recovery-step-1').style.display = 'none';
     document.getElementById('recovery-step-2').style.display = 'block';
 
   } catch (err) {
-
-    recoveryMessage(
-      'error',
-      'Connection error. Please try again.'
-    );
-
+    recoveryMessage('error', 'Connection error. Please try again.');
   }
-
 }
 
 /* =========================================================
-   VERIFY OTP + RESET PASSWORD
+   VERIFY OTP + RESET PASSWORD (WITH DELAYED OVERLAY)
 ========================================================= */
-
 window.verifyRecoveryOTP = async function() {
   const identity = document.getElementById('f-identity').value.trim();
-
   const otp = document.getElementById('f-otp').value.trim();
-
-  const newPassword =
-    document.getElementById('f-new-password').value;
-
-  const confirmPassword =
-    document.getElementById('f-confirm-password').value;
+  const newPassword = document.getElementById('f-new-password').value;
+  const confirmPassword = document.getElementById('f-confirm-password').value;
+  const submitBtn = document.getElementById('f-submit-reset-btn');
 
   if (!otp || !newPassword || !confirmPassword) {
-
-    recoveryMessage(
-      'error',
-      'Fill all fields first.'
-    );
-
+    recoveryMessage('error', 'Fill all fields first.');
     return;
-
   }
 
   if (newPassword.length < 6) {
-
-    recoveryMessage(
-      'error',
-      'Password must be at least 6 characters.'
-    );
-
+    recoveryMessage('error', 'Password must be at least 6 characters.');
     return;
-
   }
 
   if (newPassword !== confirmPassword) {
-
-    recoveryMessage(
-      'error',
-      'Passwords do not match.'
-    );
-
+    recoveryMessage('error', 'Passwords do not match.');
     return;
-
   }
 
-  recoveryMessage(
-    'success',
-    'Verifying OTP...'
-  );
+  // Prevent multiple clicks while running data checks
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Processing...";
+  }
+
+  recoveryMessage('success', 'Verifying security token...');
 
   try {
-const result = await api('verifyRecoveryOTP', {
+    const result = await api('verifyRecoveryOTP', {
+      identity,
+      otp,
+      newPassword
+    });
 
-  identity,
-  otp,
-  newPassword
+    console.log('VERIFY OTP RESPONSE:', result);
 
-});
+    if (!result || !result.success) {
+      recoveryMessage('error', (result && result.message) ? result.message : 'Invalid code or server error.');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Reset Password";
+      }
+      return;
+    }
 
-console.log('VERIFY OTP RESPONSE:', result);
+    // Hide standard message alert banner to clear space
+    document.getElementById('forgot-msg').style.display = 'none';
 
-if (!result || !result.success) {
+    // Target the inner layout container
+    const step2Container = document.getElementById('recovery-step-2');
+    if (step2Container) {
+      step2Container.innerHTML = `
+        <div style="text-align: center; padding: 35px 15px; font-family: 'Rajdhani', sans-serif;">
+          <div style="font-size: 55px; color: #d4a843; margin-bottom: 15px; font-weight: bold; animation: pulse 1.5s infinite;">✓</div>
+          <h2 style="color: #ffffff; font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: 1px; margin-bottom: 12px;">
+            PASSWORD UPDATED
+          </h2>
+          <p style="color: rgba(255,255,255,0.75); font-size: 1.05rem; line-height: 1.5; margin: 0 auto 20px auto; max-width: 280px;">
+            Your authorization access credentials have been changed successfully.
+          </p>
+          <div style="font-size: 0.9rem; color: #e8192c; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;">
+            Returning to Login in <span id="recovery-countdown" style="font-size: 1.1rem; color: #ffffff;">10</span> seconds...
+          </div>
+        </div>
+      `;
 
-  recoveryMessage(
-    'error',
-    (result && result.message)
-      ? result.message
-      : 'Server returned invalid response.'
-  );
+      let secondsRemaining = 10;
+      const intervalId = setInterval(() => {
+        secondsRemaining--;
+        const countdownSpan = document.getElementById('recovery-countdown');
+        if (countdownSpan) {
+          countdownSpan.innerText = secondsRemaining;
+        }
 
-  return;
-
-}
-
-recoveryMessage(
-  'success',
-  'Password reset successful. You can now login.'
-);
-
-    setTimeout(() => {
-
-      hideForgotPasswordForm();
-
-    }, 2000);
+        if (secondsRemaining <= 0) {
+          clearInterval(intervalId);
+          hideForgotPasswordForm();
+        }
+      }, 1000);
+    }
 
   } catch (err) {
-
-    recoveryMessage(
-      'error',
-      'Server connection failed.'
-    );
-
+    recoveryMessage('error', 'Server connection timed out.');
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Reset Password";
+    }
   }
-
 }
-
 </script>
   // <!-- EDIT MEMBER MODAL -->
   <div id="edit-modal">
@@ -1619,117 +1510,208 @@ recoveryMessage(
     </div>
   </div>
 
-  <!-- CONTACT -->
-  <div id="contact-page" class="page">
-    <div class="inner-page">
-      <div class="page-header">
-        <h1><span class="line1">CONTACT</span><span class="line2">US</span></h1>
-      </div>
-      <div class="contact-grid">
-        <div class="glass" style="padding:2rem">
-          <h3 style="font-family:'Bebas Neue';font-size:2rem;letter-spacing:2px;margin-bottom:1rem"><span class="line1">SANSIRO</span><span class="line2">SPECIAL</span></h3>
-          <p style="color:var(--muted);line-height:1.8">The home of elite football management.</p>
-          <div class="contact-detail"><div><div class="contact-detail-label">Location</div><div class="contact-detail-val">Buokrom Estate / Sore Nkwanta, Kumasi</div></div></div>
-          <div class="contact-detail"><div><div class="contact-detail-label">Email</div><div class="contact-detail-val">koolasamuel@gmail.com</div></div></div>
-          <!-- SOCIAL MEDIA LINKS — update hrefs below to real URLs -->
-          <div style="margin-top:1.5rem">
-            <div style="font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem">Follow Us</div>
-            <div class="social-links">
-              <a class="social-link fb" href="https://facebook.com" target="_blank" rel="noopener" title="Facebook">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-              </a>
-              <a class="social-link wa" href="https://wa.me/233000000000" target="_blank" rel="noopener" title="WhatsApp">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-              </a>
-              <a class="social-link ig" href="https://instagram.com" target="_blank" rel="noopener" title="Instagram">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-              </a>
-              <a class="social-link tw" href="https://twitter.com" target="_blank" rel="noopener" title="X / Twitter">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </a>
-              <a class="social-link yt" href="https://youtube.com" target="_blank" rel="noopener" title="YouTube">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="#050505" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
-              </a>
+<!-- CONTACT -->
+<div id="contact-page" class="page">
+  <div class="inner-page">
+    <div class="page-header">
+      <h1><span class="line1">CONTACT</span><span class="line2">US</span></h1>
+    </div>
+    
+    <div class="contact-grid">
+      <!-- LEFT PANEL: BRANDING & OFFICIAL LINKS -->
+      <div class="glass" style="padding:2.5rem; display: flex; flex-direction: column; align-items: center; justify-content: space-between; min-height: 550px;">
+        
+        <!-- BRAND BLOCK -->
+        <div style="text-align: center;">
+          <div style="position: relative; display: inline-block; margin-bottom: 1rem;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 110px; height: 110px; background: var(--gold); filter: blur(40px); opacity: 0.15; z-index: 0;"></div>
+            <img src="https://raw.githubusercontent.com/koolasamuel-cell/Sansior-Football-Club-Family/main/logo.png" 
+                 alt="Sansiro Logo" 
+                 style="width: 120px; height: auto; position: relative; z-index: 1;">
+          </div>
+          
+          <h3 style="font-family:'Bebas Neue'; font-size:3rem; letter-spacing:3px; line-height: 1; margin: 0;">
+            <span style="color: #ff4d4d;">SANSIRO</span><br>
+            <span style="color: #4d79ff; font-size: 2.4rem;">SPECIAL</span>
+          </h3>
+          <p style="color:var(--muted); font-size: 0.8rem; letter-spacing: 2px; margin-top: 0.5rem; text-transform: uppercase; opacity: 0.8;">
+            Elite Football Management
+          </p>
+        </div>
+
+        <!-- INFO SECTION -->
+        <div style="width: 100%; margin: 2rem 0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.5rem 0;">
+          <div style="margin-bottom: 1.2rem; display: flex; align-items: center; gap: 15px;">
+            <span style="font-size: 1.2rem; color: var(--gold);">📍</span>
+            <div style="text-align: left;">
+              <div style="color: var(--gold); font-size: 0.6rem; letter-spacing: 2px; font-weight: bold;">LOCATION</div>
+              <div style="font-size: 0.85rem; color: #fff;">Buokrom Estate / Sore Nkwanta, Kumasi</div>
+            </div>
+          </div>
+          
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <span style="font-size: 1.2rem; color: var(--gold);">✉️</span>
+            <div style="text-align: left;">
+              <div style="color: var(--gold); font-size: 0.6rem; letter-spacing: 2px; font-weight: bold;">EMAIL</div>
+              <div style="font-size: 0.85rem; color: #fff;">koolasamuel@gmail.com</div>
             </div>
           </div>
         </div>
-        <div class="glass" style="padding:2rem">
-          <div class="section-title"><span class="line1">SEND A</span><span class="line2">MESSAGE</span></div>
-          <div class="form-group"><label>Name</label><input id="c-name" type="text" placeholder="Your name"/></div>
-          <div class="form-group"><label>Email</label><input id="c-email" type="email" placeholder="your@email.com"/></div>
-          <div class="form-group"><label>Message</label><textarea id="c-msg" placeholder="Your message..."></textarea></div>
-          <button class="btn btn-gold" style="clip-path:none;border-radius:2px" onclick="sendContact()">Send Message</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- ACHIEVEMENTS -->
-  <div id="achievements-page" class="page">
-    <div class="inner-page">
-      <div class="page-header">
-        <h1><span class="line1">CLUB</span><span class="line2">ACHIEVEMENTS</span></h1>
-      </div>
-      <div class="achievements-split">
-        <div class="glass team-achievements red-theme">
-          <div class="ach-header"><div class="ach-crest-sm" style="color:var(--red);border-color:var(--red);overflow:hidden;padding:0">
-            <svg viewBox="0 0 50 50" width="50" height="50"><path d="M25 3 L40 8 L45 23 L40 38 L25 46 L10 38 L5 23 L10 8 Z" fill="#8b0000" stroke="#c9a84c" stroke-width="1.5"/>
-            <clipPath id="sa1"><path d="M25 4 L39 9 L44 23 L39 37 L25 44 L11 37 L6 23 L11 9 Z"/></clipPath>
-            <rect x="6" y="4" width="6" height="40" fill="#cc0022" clip-path="url(#sa1)"/>
-            <rect x="12" y="4" width="6" height="40" fill="#111" clip-path="url(#sa1)"/>
-            <rect x="18" y="4" width="6" height="40" fill="#cc0022" clip-path="url(#sa1)"/>
-            <rect x="24" y="4" width="6" height="40" fill="#111" clip-path="url(#sa1)"/>
-            <rect x="30" y="4" width="6" height="40" fill="#cc0022" clip-path="url(#sa1)"/>
-            <rect x="36" y="4" width="9" height="40" fill="#111" clip-path="url(#sa1)"/>
-            <path d="M25 4 L39 9 L44 23 L39 37 L25 44 L11 37 L6 23 L11 9 Z" fill="none" stroke="#c9a84c" stroke-width="1.5"/></svg>
-          </div><div><div class="ach-club-name" style="color:var(--red)">AC MILAN</div></div></div>
-          <div class="ach-list">
-            <div class="ach-item"><div class="ach-icon">🏆</div><div><div class="ach-count">19</div><div class="ach-name">Serie A Titles</div></div></div>
-            <div class="ach-item"><div class="ach-icon">⭐</div><div><div class="ach-count">7</div><div class="ach-name">Champions League</div></div></div>
-            <div class="ach-item"><div class="ach-icon">🥇</div><div><div class="ach-count">5</div><div class="ach-name">Coppa Italia</div></div></div>
+        <!-- OFFICIAL SOCIAL ICONS -->
+        <div style="width: 100%; text-align: center;">
+          <div style="font-size:.55rem; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:1.5rem">Official Family Channels</div>
+          
+          <div class="social-links" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+            
+       
+       <!-- Facebook -->
+<a href="#" target="_blank" title="Facebook"
+style="color:#1877F2;background:rgba(24,119,242,.12);padding:10px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+<path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.016 4.388 10.998 10.125 11.854v-8.385H7.078v-3.469h3.047V9.41c0-3.017 1.792-4.688 4.533-4.688 1.312 0 2.686.235 2.686.235v2.953h-1.514c-1.49 0-1.956.926-1.956 1.875v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.071 24 18.089 24 12.073z"/>
+</svg>
+</a>
+
+<!-- YouTube -->
+<a href="#" target="_blank" title="YouTube"
+style="color:#FF0000;background:rgba(255,0,0,.12);padding:10px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.8 15.5v-7L16 12l-6.2 3.5z"/>
+</svg>
+</a>
+
+<!-- Snapchat -->
+<a href="#" target="_blank" title="Snapchat"
+style="color:#000;background:#FFFC00;padding:10px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+<path d="M12 2.2c1.8 0 3.2 1.4 3.2 3.2v1.5c0 .3.2.5.5.7.5.2 1 .4 1.5.7.4.2.5.7.2 1.1-.3.4-.8.7-1.3.8-.2 0-.3.2-.2.4.5 1.5 1.8 2.5 3.3 2.7.4 0 .6.5.3.8-.7.7-1.8 1.2-3 1.3-.3 0-.5.2-.6.5-.5 1.3-1.8 2.2-3.3 2.2s-2.8-.9-3.3-2.2c-.1-.3-.3-.5-.6-.5-1.2-.1-2.3-.6-3-1.3-.3-.3-.1-.8.3-.8 1.5-.2 2.8-1.2 3.3-2.7.1-.2 0-.4-.2-.4-.5-.1-1-.4-1.3-.8-.3-.4-.2-.9.2-1.1.5-.3 1-.5 1.5-.7.3-.2.5-.4.5-.7V5.4c0-1.8 1.4-3.2 3.2-3.2z"/>
+</svg>
+</a>
+
+<!-- Telegram -->
+<a href="#" target="_blank" title="Telegram"
+style="color:#229ED9;background:rgba(34,158,217,.12);padding:10px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+<path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.6 8.2-2 9.3c-.1.5-.4.7-.8.7-.3 0-.6-.1-.9-.3l-3-2.2-1.4 1.4c-.2.2-.4.3-.7.3l.2-3.2 5.9-5.3c.2-.2-.1-.3-.3-.2l-7.2 4.5-3.1-1c-.5-.2-.5-.5.1-.8l12.2-4.7c.5-.2.9.1.8.8z"/>
+</svg>
+</a>
+
+<!-- TikTok -->
+<a href="#" target="_blank" title="TikTok"
+style="color:#fff;background:#000;padding:10px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+<path d="M19.6 6.7c-1.5 0-2.9-.5-4-1.5V15c0 4.2-3.4 7.5-7.5 7.5S.6 19.2.6 15 4 7.5 8.1 7.5c.5 0 1 .1 1.5.2v3.7c-.5-.2-1-.3-1.5-.3-2.1 0-3.8 1.7-3.8 3.9S6 18.8 8.1 18.8s3.8-1.7 3.8-3.8V0h3.7c.3 2.6 2.4 4.7 5 5v3.7z"/>
+</svg>
+</a>
+
+<!-- Instagram -->
+<a href="#" target="_blank" title="Instagram"
+style="color:#E4405F;background:rgba(228,64,95,.12);padding:10px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<rect x="2" y="2" width="20" height="20" rx="5"/>
+<circle cx="12" cy="12" r="4"/>
+<circle cx="18" cy="6" r="1"/>
+</svg>
+</a>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/233000000000" target="_blank" title="WhatsApp"
+style="color:#25D366;background:rgba(37,211,102,.12);padding:10px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+<path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.9c0 2.1.6 4.2 1.6 5.9L0 24l6.4-1.7c1.7.9 3.6 1.4 5.6 1.4h.1c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.1-3.5-8.3zm-8.4 18.2c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4c-1-1.5-1.5-3.3-1.5-5.1 0-5.4 4.4-9.8 9.8-9.8 2.6 0 5.1 1 7 2.9s2.9 4.4 2.9 7c0 5.4-4.4 9.7-9.8 9.7zm5.4-7.3c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.1-.7.1l-.9 1.2c-.2.2-.3.2-.6.1-1.8-.9-3-2.6-3.2-2.9-.2-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.7.3-.7.7-1.1 1.7-1.1 2.7 0 .3.1.7.2 1 .8 2.2 2.3 4.1 4.3 5.4.7.4 1.4.7 2.2.9.7.2 1.4.2 2.1.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/>
+</svg>
+</a>
           </div>
         </div>
-        <div class="glass team-achievements blue-theme">
-          <div class="ach-header"><div class="ach-crest-sm" style="color:var(--blue);border-color:var(--blue);overflow:hidden;padding:0">
-            <svg viewBox="0 0 50 50" width="50" height="50"><path d="M25 3 L40 8 L45 23 L40 38 L25 46 L10 38 L5 23 L10 8 Z" fill="#001f5c" stroke="#c9a84c" stroke-width="1.5"/>
-            <clipPath id="sb1"><path d="M25 4 L39 9 L44 23 L39 37 L25 44 L11 37 L6 23 L11 9 Z"/></clipPath>
-            <rect x="6" y="4" width="6" height="40" fill="#003399" clip-path="url(#sb1)"/>
-            <rect x="12" y="4" width="6" height="40" fill="#111" clip-path="url(#sb1)"/>
-            <rect x="18" y="4" width="6" height="40" fill="#003399" clip-path="url(#sb1)"/>
-            <rect x="24" y="4" width="6" height="40" fill="#111" clip-path="url(#sb1)"/>
-            <rect x="30" y="4" width="6" height="40" fill="#003399" clip-path="url(#sb1)"/>
-            <rect x="36" y="4" width="9" height="40" fill="#111" clip-path="url(#sb1)"/>
-            <path d="M25 4 L39 9 L44 23 L39 37 L25 44 L11 37 L6 23 L11 9 Z" fill="none" stroke="#c9a84c" stroke-width="1.5"/></svg>
-          </div><div><div class="ach-club-name" style="color:var(--blue)">INTER MILAN</div></div></div>
-          <div class="ach-list">
-            <div class="ach-item"><div class="ach-icon">🏆</div><div><div class="ach-count">20</div><div class="ach-name">Serie A Titles</div></div></div>
-            <div class="ach-item"><div class="ach-icon">⭐</div><div><div class="ach-count">3</div><div class="ach-name">Champions League</div></div></div>
-            <div class="ach-item"><div class="ach-icon">🥇</div><div><div class="ach-count">8</div><div class="ach-name">Coppa Italia</div></div></div>
-          </div>
-        </div>
       </div>
+
+      <!-- RIGHT PANEL: FORM -->
+      <div class="glass" style="padding:2.5rem; display: flex; flex-direction: column; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05);">
+        <div class="section-title" style="margin-bottom: 2.5rem;">
+          <span class="line1" style="font-size: 1.1rem; opacity: 0.7;">GET IN TOUCH</span>
+          <span class="line2" style="font-size: 2.8rem; color: var(--gold);">SEND MESSAGE</span>
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label style="font-size: 0.65rem; color: var(--gold); letter-spacing: 2px; font-weight: bold; margin-bottom: 8px; display: block;">FULL NAME</label>
+          <input id="c-name" type="text" placeholder="Enter your name" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 4px; color: white; width: 100%;"/>
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label style="font-size: 0.65rem; color: var(--gold); letter-spacing: 2px; font-weight: bold; margin-bottom: 8px; display: block;">EMAIL ADDRESS</label>
+          <input id="c-email" type="email" placeholder="your@email.com" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 4px; color: white; width: 100%;"/>
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 2rem;">
+          <label style="font-size: 0.65rem; color: var(--gold); letter-spacing: 2px; font-weight: bold; margin-bottom: 8px; display: block;">YOUR MESSAGE</label>
+          <textarea id="c-msg" style="min-height: 140px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 4px; color: white; width: 100%;" placeholder="How can the Sansiro Family help you?"></textarea>
+        </div>
+        
+        <button class="btn btn-gold" style="clip-path:none; border-radius:4px; padding: 1.2rem; width: 100%; font-weight: bold; letter-spacing: 2px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);" onclick="sendContact()">DISPATCH MESSAGE</button>
+      </div>
+      
     </div>
   </div>
-
+</div>
   <!-- DASHBOARD -->
-  <div id="dashboard-page" class="page">
-    <div style="max-width:1400px;margin:0 auto;padding:0 1.5rem">
-      <div class="dash-header">
-        <div style="display:flex;align-items:center;gap:1.5rem">
-          <div style="width:90px;height:90px;border-radius:50%;border:3px solid var(--gold);overflow:hidden;flex-shrink:0;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(212,168,67,0.3)">
-            <img id="dash-profile-img" src="https://via.placeholder.com/90?text=⚽" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">
-          </div>
-          <div>
-            <div class="dash-welcome">Welcome, <span id="dash-name">—</span></div>
-            <div class="dash-role-tag" id="dash-role-tag">—</div>
-            <div style="font-size:.75rem;color:var(--muted)" id="dash-team-tag">—</div>
-          </div>
+<div id="dashboard-page" class="page">
+
+  <div style="max-width:1400px;margin:0 auto;padding:0 1.5rem">
+
+    <!-- DASH HEADER -->
+    <div class="dash-header">
+
+      <!-- LEFT SIDE -->
+      <div class="dash-user-area">
+
+        <!-- PROFILE IMAGE -->
+        <div class="dash-avatar-wrap">
+
+          <img
+            id="dash-profile-img"
+            src="https://via.placeholder.com/90?text=⚽"
+            alt="Profile">
+
         </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.4rem">
-        <div id="dash-qual-display" class="dash-qual-display"></div>
-        <button class="btn btn-outline btn-sm" style="clip-path:none;border-radius:2px" onclick="doLogout()">Logout</button>
+
+        <!-- USER INFO -->
+        <div class="dash-user-info">
+
+          <div class="dash-welcome">
+            Welcome,
+            <span id="dash-name">—</span>
+          </div>
+
+          <div
+            class="dash-role-tag"
+            id="dash-role-tag">
+            —
+          </div>
+
+          <div
+            class="dash-team-tag"
+            id="dash-team-tag">
+            —
+          </div>
+
+        </div>
+
       </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="dash-right-panel">
+
+        <!-- PAYMENT STATUS -->
+        <div
+          id="dash-qual-display"
+          class="dash-qual-display">
+        </div>
+
+        </div>
       </div>
+    </div>
+
 
       <div class="dash-layout">
         <div class="dash-sidebar glass" style="padding:1rem;height:fit-content">
@@ -2671,15 +2653,86 @@ const APP_URL = "https://script.google.com/macros/s/AKfycbz64Wg6uPLH8NlLJQpo6pjp
     loadDashboardOverview();
   }
 
-  function doLogout() {
+ /**
+ * EXECUTE USER LOGOUT & INTERFACE RESET
+ * Clears auth state matrices, closes chat threads, resets header info,
+ * and perfectly syncs the visibility of logout components across views.
+ */
+function doLogout() {
     if (!confirm('Exit system?')) return;
-    currentUser=null; localStorage.removeItem('sansiro_user');
-    if (chatInterval) { clearInterval(chatInterval); chatInterval=null; }
-    const info=document.getElementById('nav-user-info'); if(info){info.textContent='';info.style.display='none';}
-    document.getElementById('nav-enter-btn').textContent='🔑 Enter System';
-    toast('Logged out.','info'); showPage('home');
-  }
 
+    // 1. Clear credentials and active background loops
+    currentUser = null; 
+    localStorage.removeItem('sansiro_user');
+    if (chatInterval) { clearInterval(chatInterval); chatInterval = null; }
+    
+    // 2. Clear out user text chips
+    const info = document.getElementById('nav-user-info'); 
+    if (info) { info.textContent = ''; info.style.display = 'none'; }
+    
+    // 3. Reset landing page access button text
+    const enterBtn = document.getElementById('nav-enter-btn');
+    if (enterBtn) enterBtn.textContent = '🔑 Enter System';
+    
+    // 4. Force synchronization of interface triggers
+    if (typeof syncSansiroAuthUI === 'function') {
+        syncSansiroAuthUI();
+    }
+    
+    // 5. Throw alert and route back home
+    toast('Logged out.', 'info'); 
+    showPage('home');
+}
+
+/**
+ * GLOBAL AUTH UI STATE ENGINE
+ * Automatically handles showing/hiding logout elements based on whether 
+ * a user session exists and whether the dashboard container is currently visible.
+ */
+function syncSansiroAuthUI() {
+    const desktopBtn = document.getElementById('nav-logout-btn');
+    const mobileItem = document.getElementById('mobile-logout-item');
+    const hasSession = !!localStorage.getItem('sansiro_user') || (typeof currentUser !== 'undefined' && currentUser);
+    
+    // Find if a dashboard element or logged-in state wrapper exists and is visible
+    const dashboardVisible = document.getElementById('dashboard-page')?.classList.contains('active') || 
+                             window.location.hash.includes('dashboard') ||
+                             !document.getElementById('home-page')?.classList.contains('active');
+
+    // ONLY display logout buttons if a session is real AND the user isn't on the public home layout
+    if (hasSession && dashboardVisible) {
+        if (desktopBtn) desktopBtn.style.setProperty('display', 'inline-flex', 'important');
+        if (mobileItem) mobileItem.style.setProperty('display', 'block', 'important');
+    } else {
+        if (desktopBtn) desktopBtn.style.setProperty('display', 'none', 'important');
+        if (mobileItem) mobileItem.style.setProperty('display', 'none', 'important');
+    }
+}
+
+// ── AUTOMATED SYSTEM MONITORING ──
+// Watches the document layout to auto-toggle visibility states when logging in, changing pages, or reloading
+(function() {
+    const runUpdate = () => {
+        setTimeout(syncSansiroAuthUI, 50); // Slight buffer to wait for page transitions
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', runUpdate);
+    } else {
+        runUpdate();
+    }
+
+    // Intercept clicks on common system entry buttons to trigger immediate evaluation
+    document.addEventListener('click', function(e) {
+        if (e.target && (e.target.id === 'login-btn' || e.target.onclick?.toString().includes('doLogin'))) {
+            setTimeout(syncSansiroAuthUI, 800); // Wait for the API callback processing time
+        }
+    });
+
+    // Setup an observer to watch for page view class updates (e.g., toggling active classes)
+    const observer = new MutationObserver(runUpdate);
+    observer.observe(document.body, { attributes: true, subtree: true, attributeFilter: ['class', 'style'] });
+})();
   function applyRolePermissions() {
     const role=currentUser.Role;
     const isAdmin=role==='Admin', isPres=role==='President', isSec=role==='Secretary', isCoach=role==='Coach';
@@ -3949,30 +4002,207 @@ const APP_URL = "https://script.google.com/macros/s/AKfycbz64Wg6uPLH8NlLJQpo6pjp
     }, 6000);
   }
 
-  // ── SESSION TIMEOUT ──
-  const SESSION_TIMEOUT = 25 * 60 * 1000; // 25 minutes
-  const SESSION_WARNING = 23 * 60 * 1000; // warn at 23 min
-  let activityTimer = null, warningTimer = null;
-  function resetActivityTimer() {
-    clearTimeout(activityTimer); clearTimeout(warningTimer);
-    document.getElementById('session-warning').style.display = 'none';
-    if (!currentUser) return;
-    warningTimer = setTimeout(() => {
-      document.getElementById('session-warning').style.display = 'block';
-    }, SESSION_WARNING);
-    activityTimer = setTimeout(() => {
-      document.getElementById('session-warning').style.display = 'none';
-      toast('Session expired. Please login again.', 'error');
-      doLogout();
-    }, SESSION_TIMEOUT);
-  }
-  function extendSession() {
-    document.getElementById('session-warning').style.display = 'none';
-    resetActivityTimer();
-    toast('Session extended!', 'success');
-  }
-  ['click','keydown','mousemove','touchstart'].forEach(e => document.addEventListener(e, () => { if (currentUser) resetActivityTimer(); }, { passive: true }));
+/* ==========================================
+   ── SMART SESSION TIMEOUT & INACTIVITY CORE ──
+   ========================================== */
 
+// ── CONFIGURATION TIMERS ──
+const SESSION_TIMEOUT = 30 * 60 * 1000; // 30 Minutes Total Inactivity
+const SESSION_WARNING = 27 * 60 * 1000; // Show Warning At 27 Minutes
+
+// ── GLOBAL TIMER REFERENCES ──
+let activityTimer = null;
+let warningTimer = null;
+
+// ── ACTIVITY THROTTLE CONTROL ──
+let lastActivityReset = 0;
+
+// ── WARNING AUDIO ──
+// Replace with your own audio file path if needed
+const warningSound = new Audio(
+  'https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3'
+);
+
+// Audio Settings
+warningSound.volume = 0.7;
+warningSound.preload = 'auto';
+
+/**
+ * PLAY WARNING ALERT SOUND
+ */
+function playWarningSound() {
+
+  try {
+
+    // Restart sound from beginning
+    warningSound.currentTime = 0;
+
+    // Play audio safely
+    warningSound.play().catch(() => {});
+
+  } catch (err) {
+    console.warn('Warning sound blocked:', err);
+  }
+
+}
+
+/**
+ * RESET SESSION ACTIVITY TIMERS
+ * Handles:
+ * - Clearing previous timers
+ * - Hiding warning banner
+ * - Restarting warning countdown
+ * - Auto logout execution
+ */
+function resetActivityTimer() {
+
+  // ── CLEAR EXISTING TIMERS ──
+  clearTimeout(activityTimer);
+  clearTimeout(warningTimer);
+
+  // ── WARNING ELEMENT ──
+  const warningBanner = document.getElementById('session-warning');
+
+  // Hide warning during active use
+  if (warningBanner) {
+    warningBanner.style.display = 'none';
+  }
+
+  // Stop warning sound if playing
+  warningSound.pause();
+  warningSound.currentTime = 0;
+
+  // ── SECURITY GUARD ──
+  if (!currentUser) return;
+
+  /* ==========================================
+     ── WARNING TIMER ──
+     ========================================== */
+
+  warningTimer = setTimeout(() => {
+
+    // Prevent warning after logout
+    if (!currentUser) return;
+
+    // Show warning banner
+    if (warningBanner) {
+      warningBanner.style.display = 'block';
+    }
+
+    // Play alert sound
+    playWarningSound();
+
+    // Toast warning
+    toast(
+      'You have been inactive. Session will expire in 3 minutes.',
+      'warning'
+    );
+
+  }, SESSION_WARNING);
+
+  /* ==========================================
+     ── AUTO LOGOUT TIMER ──
+     ========================================== */
+
+  activityTimer = setTimeout(() => {
+
+    // Prevent duplicate logout calls
+    if (!currentUser) return;
+
+    // Hide warning
+    if (warningBanner) {
+      warningBanner.style.display = 'none';
+    }
+
+    // Stop audio
+    warningSound.pause();
+    warningSound.currentTime = 0;
+
+    // Logout notification
+    toast(
+      'Session expired due to inactivity. Please login again.',
+      'error'
+    );
+
+    // Execute logout
+    doLogout();
+
+  }, SESSION_TIMEOUT);
+}
+
+/**
+ * EXTEND USER SESSION
+ * Called when user clicks "Stay Logged In"
+ */
+function extendSession() {
+
+  const warningBanner = document.getElementById('session-warning');
+
+  // Hide warning popup/banner
+  if (warningBanner) {
+    warningBanner.style.display = 'none';
+  }
+
+  // Stop warning sound
+  warningSound.pause();
+  warningSound.currentTime = 0;
+
+  // Restart inactivity cycle
+  resetActivityTimer();
+
+  // Success notification
+  toast(
+    'Session extended successfully!',
+    'success'
+  );
+}
+
+/* ==========================================
+   ── GLOBAL USER ACTIVITY DETECTION ──
+   ========================================== */
+
+// User interaction events
+const activityEvents = [
+  'click',
+  'keydown',
+  'touchstart',
+  'scroll'
+];
+
+/**
+ * PERFORMANCE-OPTIMIZED ACTIVITY LISTENERS
+ * Prevents excessive resetActivityTimer() calls
+ */
+activityEvents.forEach(event => {
+
+  document.addEventListener(event, () => {
+
+    // Ignore activity if not logged in
+    if (!currentUser) return;
+
+    const now = Date.now();
+
+    // Prevent excessive rapid resets
+    if (now - lastActivityReset < 5000) return;
+
+    // Update throttle timestamp
+    lastActivityReset = now;
+
+    // Reset inactivity countdown
+    resetActivityTimer();
+
+  }, { passive: true });
+
+});
+
+/* ==========================================
+   ── OPTIONAL INITIAL SESSION START ──
+   ========================================== */
+
+// Start timers immediately if session already exists
+if (currentUser) {
+  resetActivityTimer();
+}
   // ── HASH-BASED ROUTING ──
   function showPage(name) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -4280,107 +4510,219 @@ const APP_URL = "https://script.google.com/macros/s/AKfycbz64Wg6uPLH8NlLJQpo6pjp
     if (e.target === this) closeCustomAlert();
   });
 
-  // ── OVERRIDE NATIVE confirm/alert/prompt on first user gesture ──
-  function patchNativeDialogs() {
-    window._origConfirm = window.confirm;
-    window._origAlert = window.alert;
-    window._origPrompt = window.prompt;
-    // We patch synchronous callers with async alternatives where possible
-    // For legacy code still calling confirm(), we redirect
-    Object.defineProperty(window, 'confirm', { value: function(m) {
-      // For async context, return true and schedule async version
-      sansiroConfirm(m,'Confirm','⚠️');
-      return true; // safe fallback for sync callers
-    }, writable: true });
-  }
-  document.addEventListener('click', patchNativeDialogs, { once: true });
+/* =========================================
+   PREMIUM PAYMENT QUALIFICATION SYSTEM
+========================================= */
 
-  // ── QUALIFICATION LOGIC ──
-  function getQualStatus(paidMonths, totalMonths) {
-    const pct = totalMonths > 0 ? paidMonths / totalMonths : 0;
-    if (pct >= 1.0) return { label:'🟢 Qualified', cls:'qualified', pct: 100 };
-    if (pct >= 0.3) return { label:'🟡 Partially Qualified', cls:'partial', pct: Math.round(pct*100) };
-    return { label:'🔴 Not Qualified', cls:'not-qualified', pct: Math.round(pct*100) };
-  }
+/* ─────────────────────────────
+   QUALIFICATION LOGIC
+───────────────────────────── */
 
-  function renderQualBadge(paidMonths, totalMonths) {
-    const q = getQualStatus(paidMonths, totalMonths);
-    return `<span class="qual-badge ${q.cls}">${q.label} — ${q.pct}%</span>`;
+function getQualStatus(paidMonths, totalMonths){
+
+  const pct = totalMonths > 0
+    ? paidMonths / totalMonths
+    : 0;
+
+  /* 🔴 BELOW 1/3 */
+  if(pct < 0.34){
+
+    return {
+      label: '🔴 Not Qualified',
+      cls: 'not-qualified',
+      pct: Math.round(pct * 100)
+    };
+
   }
 
-  function updateDashQual() {
-    if (!currentUser) return;
-    loadDuesFromStorage();
-    const isExec = ['President','Vice President','Secretary','Organizer','Admin','Executive'].includes(currentUser.Role);
-    const rate = isExec ? 20 : 10;
-    const dues = getMemberDues(currentUser.Name);
-    let paid = 0;
-    DUES_MONTHS.forEach(m => { if (dues[m] === 'Paid') paid++; });
-    const q = getQualStatus(paid, DUES_MONTHS.length);
-    const el = document.getElementById('dash-qual-display');
-    if (el) {
-      el.innerHTML = `<span class="qual-badge ${q.cls}" title="Dues qualification status">${q.label}</span>`;
+  /* 🟡 ABOVE 1/3 */
+  if(pct < 0.67){
+
+    return {
+      label: '🟡 Partially Qualified',
+      cls: 'partial',
+      pct: Math.round(pct * 100)
+    };
+
+  }
+
+  /* 🟢 2/3 OR FULL */
+  return {
+
+    label: '🟢 Qualified',
+    cls: 'qualified',
+    pct: Math.round(pct * 100)
+
+  };
+
+}
+
+/* ─────────────────────────────
+   RENDER PREMIUM UI
+───────────────────────────── */
+
+function renderQualBadge(paidMonths, totalMonths){
+
+  const q = getQualStatus(
+    paidMonths,
+    totalMonths
+  );
+
+  return `
+
+    <div 
+      class="qual-badge ${q.cls}"
+      title="Dues qualification status">
+
+      <div class="qual-top">
+
+        <div class="qual-label">
+          ${q.label}
+        </div>
+
+        <div class="qual-percent">
+          ${q.pct}%
+        </div>
+
+      </div>
+
+      <div class="qual-progress-wrap">
+
+        <div 
+          class="qual-progress"
+          style="width:${q.pct}%">
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+/* ─────────────────────────────
+   UPDATE DASHBOARD INDICATOR
+───────────────────────────── */
+
+function updateDashQual(){
+
+  /* SAFETY CHECK */
+  if(!currentUser) return;
+
+  /* LOAD STORAGE */
+  loadDuesFromStorage();
+
+  /* MEMBER DUES */
+  const dues = getMemberDues(
+    currentUser.Name
+  );
+
+  /* COUNT PAID MONTHS */
+  let paid = 0;
+
+  DUES_MONTHS.forEach(month => {
+
+    if(dues[month] === 'Paid'){
+
+      paid++;
+
     }
+
+  });
+
+  /* TARGET CONTAINER */
+  const el = document.getElementById(
+    'dash-qual-display'
+  );
+
+  /* RENDER */
+  if(el){
+
+    el.innerHTML = renderQualBadge(
+      paid,
+      DUES_MONTHS.length
+    );
+
   }
 
+}
   // ── PROFILE MODAL (team member click) ──
   function openProfileModal(memberId) {
     const m = clubMembers.find(x => x.id === memberId);
     if (!m) return;
     const col = m.team === 'AC Milan' ? 'var(--red)' : m.team === 'Inter Milan' ? 'var(--blue)' : 'var(--gold)';
     const imgHtml = m.img
-      ? `<img src="${m.img}" style="width:100%;height:100%;border-radius:50%;object-fit:cover" onerror="this.outerHTML='${m.name.charAt(0)}'"/>`
+      ? `<img src="${m.img}" style="width:100%;height:100%;border-radius:50%;object-fit:cover" onerror="this.parentNode.innerHTML='${m.name.charAt(0).toUpperCase()}'"/>`
       : m.name.charAt(0).toUpperCase();
 
-    // Count stats
-    const ps = playerStats[m.name] || {};
-    
-    // Contribution description based on role
+    const ps = (typeof playerStats !== 'undefined' && playerStats) ? (playerStats[m.name] || {}) : {};
+
     const roleContribs = {
       'President': 'Provides overall leadership and strategic direction for the club. Ensures smooth operations and represents Sansiro at official events.',
-      'Vice President': 'Supports the President in leadership duties and steps in during the President\'s absence. Oversees key club decisions.',
+      'Vice President': "Supports the President in leadership duties and steps in during the President's absence. Oversees key club decisions.",
       'Secretary': 'Manages all administrative duties, records meetings, handles correspondence, and maintains member records.',
       'Organizer': 'Coordinates match schedules, events, and logistics to ensure seamless club activities.',
-      'Coach': 'Leads training sessions, develops tactics, selects squads, and drives the team\'s performance and development.',
+      'Coach': "Leads training sessions, develops tactics, selects squads, and drives the team's performance and development.",
       'Captain': 'Leads the team on the pitch, motivates players, and communicates between coach and squad.',
       'Welfare': 'Looks after member wellbeing, coordinates welfare support, and ensures members are cared for during difficult times.',
       'Official': 'Assists in officiating matches and club events, ensuring rules are followed and proceedings are orderly.',
-      'Admin': 'Manages the club\'s digital infrastructure, platforms, and technical systems to keep the family connected.',
-      'Patron': 'Provides moral and financial support to the club and helps elevate Sansiro\'s standing in the community.',
+      'Admin': "Manages the club's digital infrastructure, platforms, and technical systems to keep the family connected.",
+      'Patron': "Provides moral and financial support to the club and helps elevate Sansiro's standing in the community.",
     };
     const contribution = m.contribution || roleContribs[m.role] || 'A valued member of the Sansiro Football Family, contributing to the growth and success of our community.';
 
-    const content = `
-      <div class="profile-modal-avatar" style="border-color:${col}">${imgHtml}</div>
-      <div class="profile-modal-name">${m.name}</div>
-      <div class="profile-modal-role" style="color:${col}">${m.role}</div>
-      <div class="profile-modal-team">${m.team === 'Both' ? 'Management / Both Teams' : m.team}</div>
-      ${m.captain ? '<div style="margin-top:.5rem"><span class="captain-badge">⭐ Team Captain</span></div>' : ''}
-      ${m.status && m.status !== 'Available' ? `<div style="margin-top:.4rem"><span class="status-badge status-${m.status.toLowerCase()}">${m.status === 'Injured' ? '🤕' : '🚫'} ${m.status}</span></div>` : ''}
-      ${(['Player','Coach','Captain'].includes(m.role)) ? `<div class="profile-modal-stats">
-        <div class="profile-stat"><div class="profile-stat-num">${ps.goals || 0}</div><div class="profile-stat-lbl">Goals</div></div>
-        <div class="profile-stat"><div class="profile-stat-num">${ps.assists || 0}</div><div class="profile-stat-lbl">Assists</div></div>
-        <div class="profile-stat"><div class="profile-stat-num">${ps.mvp || 0}</div><div class="profile-stat-lbl">MVP</div></div>
+    let modal = document.getElementById('profile-modal-popup');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'profile-modal-popup';
+      modal.style.cssText = 'position:fixed;inset:0;z-index:9995;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:1rem';
+      modal.innerHTML = `<div id="profile-modal-popup-box" style="width:100%;max-width:460px;padding:2.5rem;background:rgba(8,10,14,.98);border:1px solid rgba(255,255,255,.13);border-radius:8px;position:relative;max-height:90vh;overflow-y:auto;animation:fadeUp .3s ease">
+        <button onclick="closeProfileModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:rgba(255,255,255,.5);font-size:1.2rem;cursor:pointer;z-index:1">&#x2715;</button>
+        <div id="profile-modal-popup-content"></div>
+      </div>`;
+      modal.addEventListener('click', function(e) { if (e.target === modal) closeProfileModal(); });
+      document.body.appendChild(modal);
+    }
+    modal.style.display = 'flex';
+
+    document.getElementById('profile-modal-popup-content').innerHTML = `
+      <div style="width:120px;height:120px;border-radius:50%;margin:0 auto 1.2rem;border:3px solid ${col};display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:3rem;color:${col};background:rgba(0,0,0,.3);overflow:hidden;box-shadow:0 0 30px ${col}44">${imgHtml}</div>
+      <div style="font-family:'Bebas Neue';font-size:2rem;letter-spacing:3px;text-align:center;color:#fff;margin-bottom:.3rem">${m.name}</div>
+      <div style="font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:${col};text-align:center">${m.role}</div>
+      <div style="font-size:.78rem;color:rgba(255,255,255,.5);text-align:center;margin-top:.2rem">${m.team === 'Both' ? 'Management / Both Teams' : m.team}</div>
+      ${m.captain ? '<div style="text-align:center;margin-top:.5rem"><span style="display:inline-block;background:rgba(201,168,76,0.15);border:1px solid var(--gold);color:var(--gold);font-size:.55rem;letter-spacing:2px;padding:.15rem .4rem;border-radius:2px;text-transform:uppercase">&#x2B50; Team Captain</span></div>' : ''}
+      ${m.status && m.status !== 'Available' ? `<div style="text-align:center;margin-top:.4rem"><span style="display:inline-block;font-size:.58rem;letter-spacing:1px;padding:.15rem .4rem;border-radius:2px;text-transform:uppercase;background:rgba(255,30,30,0.15);border:1px solid var(--red);color:var(--red)">${m.status === 'Injured' ? '&#x1F915;' : '&#x1F6AB;'} ${m.status}</span></div>` : ''}
+      ${(['Player','Coach','Captain'].includes(m.role)) ? `<div style="display:flex;justify-content:center;gap:2rem;margin:1.5rem 0;padding:1rem;border-top:1px solid rgba(255,255,255,.13);border-bottom:1px solid rgba(255,255,255,.13)">
+        <div style="text-align:center"><div style="font-family:'Bebas Neue';font-size:1.8rem;color:var(--gold);line-height:1">${ps.goals || 0}</div><div style="font-size:.6rem;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase">Goals</div></div>
+        <div style="text-align:center"><div style="font-family:'Bebas Neue';font-size:1.8rem;color:var(--gold);line-height:1">${ps.assists || 0}</div><div style="font-size:.6rem;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase">Assists</div></div>
+        <div style="text-align:center"><div style="font-family:'Bebas Neue';font-size:1.8rem;color:var(--gold);line-height:1">${ps.mvp || 0}</div><div style="font-size:.6rem;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase">MVP</div></div>
       </div>` : ''}
-      <div style="text-align:left;padding:1rem;border-top:1px solid var(--border);margin-top:.5rem">
+      <div style="text-align:left;padding:1rem;border-top:1px solid rgba(255,255,255,.13);margin-top:.5rem">
         <div style="font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem">PERSONAL DETAILS</div>
-        <div style="display:flex;flex-direction:column;gap:.4rem;color:var(--muted);font-size:.88rem;line-height:1.7">
-          ${m.phone ? `<div>📞 <strong style="color:#fff">${m.phone}</strong></div>` : ''}
-          ${m.email ? `<div>✉️ <strong style="color:#fff">${m.email}</strong></div>` : ''}
-          <div>⚽ <strong style="color:#fff">Team:</strong> ${m.team === 'Both' ? 'Management' : m.team}</div>
-          <div>🏷️ <strong style="color:#fff">Role:</strong> ${m.role}</div>
-          <div>🟢 <strong style="color:#fff">Status:</strong> <span style="color:${m.status==='Available'?'#00c864':m.status==='Injured'?'var(--red)':'orange'}">${m.status||'Available'}</span></div>
+        <div style="display:flex;flex-direction:column;gap:.4rem;color:rgba(255,255,255,.5);font-size:.88rem;line-height:1.7">
+          ${m.phone ? `<div>&#x1F4DE; <strong style="color:#fff">${m.phone}</strong></div>` : ''}
+          ${m.email ? `<div>&#x2709;&#xFE0F; <strong style="color:#fff">${m.email}</strong></div>` : ''}
+          <div>&#x26BD; <strong style="color:#fff">Team:</strong> ${m.team === 'Both' ? 'Management' : m.team}</div>
+          <div>&#x1F3F7;&#xFE0F; <strong style="color:#fff">Role:</strong> ${m.role}</div>
+          <div>&#x1F7E2; <strong style="color:#fff">Status:</strong> <span style="color:${m.status==='Available'?'#00c864':m.status==='Injured'?'var(--red)':'orange'}">${m.status||'Available'}</span></div>
         </div>
       </div>
-      <div style="text-align:left;padding:1rem;border-top:1px solid var(--border);background:rgba(255,255,255,.02);border-radius:4px;margin:0 .5rem">
+      <div style="text-align:left;padding:1rem;border-top:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.02);border-radius:4px;margin:0 .5rem">
         <div style="font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem">CONTRIBUTION TO SANSIRO</div>
-        <div style="color:var(--muted);font-size:.88rem;line-height:1.8">${contribution}</div>
+        <div style="color:rgba(255,255,255,.5);font-size:.88rem;line-height:1.8">${contribution}</div>
       </div>`;
-    document.getElementById('profile-modal-content').innerHTML = content;
-    document.getElementById('profile-modal').classList.add('open');
   }
-  function closeProfileModal() { document.getElementById('profile-modal').classList.remove('open'); }
-  document.getElementById('profile-modal').addEventListener('click', function(e) { if(e.target===this) closeProfileModal(); });
+  function closeProfileModal() {
+    const popup = document.getElementById('profile-modal-popup');
+    if (popup) popup.style.display = 'none';
+    const legacy = document.getElementById('profile-modal');
+    if (legacy) legacy.classList.remove('open');
+  }
+  if (document.getElementById('profile-modal')) {
+    document.getElementById('profile-modal').addEventListener('click', function(e) { if(e.target===this) closeProfileModal(); });
+  }
+
 
   // ── ENHANCED RENDER TEAM PAGE ──
   // Override the existing renderTeamPage to add click-to-profile
